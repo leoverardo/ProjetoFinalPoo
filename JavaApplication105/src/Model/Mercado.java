@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication105;
+package Model;
 
 /**
  *
  * @author aluno.saolucas
  */
-public class JavaApplication105 {
+public class Mercado {
 
     /**
      * @param args the command line arguments
