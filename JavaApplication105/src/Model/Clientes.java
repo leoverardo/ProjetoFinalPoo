@@ -38,6 +38,15 @@ public class Clientes {
     }
         private String nome;
         private String email;
+        private String senha;
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
         private String cpf;
         
     }
