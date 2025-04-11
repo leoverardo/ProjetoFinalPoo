@@ -5,6 +5,15 @@
  */
 package view;
 
+import Controller.ClienteController;
+import Model.Clientes;
+import java.net.URL;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import utils.Utils;
+
 /**
  *
  * @author aluno.saolucas
@@ -27,21 +36,261 @@ public class FrConsultaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Buscar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblClientes = new javax.swing.JTable();
+        btnExcluir2 = new javax.swing.JToggleButton();
+        btnListar = new javax.swing.JToggleButton();
+        btnAlterar = new javax.swing.JToggleButton();
+        btnVoltar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        Buscar.setBackground(new java.awt.Color(204, 204, 204));
+        Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BuscarMouseClicked(evt);
+            }
+        });
+        Buscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Clientes");
+        Buscar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
+
+        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "idCliente", "Nome", "Email", "Senha", "CPF"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblClientes);
+
+        Buscar.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 359, 330));
+
+        btnExcluir2.setBackground(new java.awt.Color(255, 0, 51));
+        btnExcluir2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnExcluir2.setForeground(new java.awt.Color(0, 0, 0));
+        btnExcluir2.setText("Excluir");
+        btnExcluir2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExcluir2MouseClicked(evt);
+            }
+        });
+        btnExcluir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluir2ActionPerformed(evt);
+            }
+        });
+        Buscar.add(btnExcluir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 110, -1));
+
+        btnListar.setBackground(new java.awt.Color(0, 153, 255));
+        btnListar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnListar.setForeground(new java.awt.Color(0, 0, 0));
+        btnListar.setText("Listar");
+        btnListar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnListarMouseClicked(evt);
+            }
+        });
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
+        Buscar.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 110, -1));
+
+        btnAlterar.setBackground(new java.awt.Color(0, 153, 255));
+        btnAlterar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
+        btnAlterar.setText("Alterar");
+        btnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAlterarMouseClicked(evt);
+            }
+        });
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
+        Buscar.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 120, -1));
+
+        btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
+        btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
+        btnVoltar.setText("Voltar");
+        btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVoltarMouseClicked(evt);
+            }
+        });
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+        Buscar.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 120, -1));
+
+        btnBuscar.setBackground(new java.awt.Color(0, 153, 255));
+        btnBuscar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        btnBuscar.setText("Buscar");
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseClicked(evt);
+            }
+        });
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        Buscar.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 110, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginCliente2.png"))); // NOI18N
+        Buscar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+     public void pesquisar(){
+        DefaultTableModel modelotabela = (DefaultTableModel) tblClientes.getModel();
+        
+        modelotabela.setNumRows(0);
+        
+        ClienteController controller = new ClienteController();
+        
+        List<Clientes> listaUsuario = controller.listarCliente();
+        
+        for(Clientes cli: listaUsuario){
+            Object[] linha = {
+                cli.getIdCliente(),
+                cli.getNome(),
+                cli.getEmail(),
+                cli.getCpf()
+            };
+        modelotabela.addRow(linha);
+        }
+    }
+    
+    private void btnExcluir2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluir2MouseClicked
+        if(tblClientes.getSelectedRow() != -1){
+            
+            int linhaSelecionada = tblClientes.getSelectedRow();
+            String textoCelula = tblClientes.getValueAt(linhaSelecionada, 0).toString();
+            
+            int idCliente = Integer.parseInt(textoCelula);
+            
+            ClienteController controller = new ClienteController();
+            if(controller.deletarCliente(idCliente)){
+                pesquisar();
+                JOptionPane.showMessageDialog(rootPane, "O usuário foi deletado");
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "O usuário não foi deletado");
+            }
+           
+        }
+    }//GEN-LAST:event_btnExcluir2MouseClicked
+
+    private void btnExcluir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluir2ActionPerformed
+
+    private void btnListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarMouseClicked
+       pesquisar();
+    }//GEN-LAST:event_btnListarMouseClicked
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarMouseClicked
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnVoltarMouseClicked
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarMouseClicked
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
+
+    ImageIcon icon = new ImageIcon(caminhoImagem);
+
+    // Define o ícone da janela
+    this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowOpened
+
+    private void BuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarMouseClicked
+        if(tblClientes.getSelectedRow() != -1){
+            int linhaSelecionada = tblClientes.getSelectedRow();
+            String textoCelula = tblClientes.getValueAt(linhaSelecionada, 0).toString();
+            
+            int pkUsuario = Integer.parseInt(textoCelula);
+            
+            FrAlterarCliente telaAltCli = new FrAlterarCliente(null, rootPaneCheckingEnabled, pkUsuario);
+            
+            telaAltCli.setVisible(true);
+            this.setLocationRelativeTo(null);
+            pesquisar();
+        }
+    }//GEN-LAST:event_BuscarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -79,5 +328,17 @@ public class FrConsultaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Buscar;
+    private javax.swing.JToggleButton btnAlterar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JToggleButton btnExcluir;
+    private javax.swing.JToggleButton btnExcluir1;
+    private javax.swing.JToggleButton btnExcluir2;
+    private javax.swing.JToggleButton btnListar;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblClientes;
     // End of variables declaration//GEN-END:variables
 }

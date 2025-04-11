@@ -5,7 +5,6 @@
  */
 package view;
 
-import Controller.ClienteController;
 import Controller.FuncionarioController;
 import java.awt.event.KeyEvent;
 import java.net.URL;
@@ -115,6 +114,11 @@ public class FrLoginFuncionario extends javax.swing.JFrame {
         btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVoltarMouseClicked(evt);
+            }
+        });
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
             }
         });
 
@@ -245,6 +249,11 @@ public class FrLoginFuncionario extends javax.swing.JFrame {
       JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos");
     }
   }
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */

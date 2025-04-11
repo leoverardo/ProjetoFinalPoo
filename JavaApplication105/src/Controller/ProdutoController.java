@@ -113,7 +113,7 @@ public class ProdutoController {
     
     public boolean deletarProduto(int idProduto) {
     String sql = "DELETE FROM produtos "
-               + "WHERE pkusuario = ?";
+               + "WHERE idProduto = ?";
 
     GerenciadorConexao gerenciador = new GerenciadorConexao();
     PreparedStatement comando = null;
