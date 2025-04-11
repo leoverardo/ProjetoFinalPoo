@@ -74,4 +74,63 @@ public class ProdutoController {
 
     return listaProdutos;
   }
+    
+    public Produtos buscarPorId(int idProduto) {
+    String sql = "SELECT * FROM produtos "
+            + " WHERE PKUSUARIO = ? ";
+
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+    ResultSet resultado = null;
+
+    Produtos produto = new Produtos();
+
+    try {
+      comando = gerenciador.prepararComando(sql);
+
+      comando.setInt(1, idProduto);
+
+      resultado = comando.executeQuery();
+
+      if (resultado.next()) {
+
+        produto.setIdProduto(resultado.getInt("idProduto"));
+        produto.setNome(resultado.getString("nome"));
+        produto.setPreco(resultado.getDouble("preco"));
+        produto.setIdCategoria(resultado.getInt("idCategoria"));
+        produto.setValidade(resultado.getString("validade"));
+      }
+
+    } catch (SQLException ex) {
+      Logger.getLogger(ProdutoController.class.getName()).log(
+              Level.SEVERE, null, ex);
+    } finally {
+      gerenciador.fecharConexao(comando, resultado);
+    }
+    return produto;
+  }
+    
+    
+    public boolean deletarProduto(int idProduto) {
+    String sql = "DELETE FROM produtos "
+               + "WHERE pkusuario = ?";
+
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+
+    try {
+      comando = gerenciador.prepararComando(sql);
+      comando.setInt(1, idProduto);
+
+      comando.executeUpdate();
+
+      return true;
+    } catch (SQLException ex) {
+      JOptionPane.showMessageDialog(null, "Erro ao excluir: "
+              + ex);
+    } finally {
+      gerenciador.fecharConexao(comando);
+    }
+    return false;
+  }
 }

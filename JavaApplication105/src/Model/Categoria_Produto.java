@@ -20,5 +20,4 @@ public class Categoria_Produto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
 }
