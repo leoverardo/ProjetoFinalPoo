@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 
 public class FuncionarioController {
-    public boolean loginCliente(String email, String senha) {
+    public boolean loginFuncionario(String email, String senha) {
     String sql = "SELECT * from funcionarios "
             + " WHERE email = ? and senha = ? ";
 
@@ -35,7 +35,7 @@ public class FuncionarioController {
     return false;
   }
     
-    public boolean inserirProduto(Funcionario funcionario){
+    public boolean inserirFuncionario(Funcionario funcionario){
     String sql = "INSERT INTO funcionarios (nome, email, senha, cpf, cargo) "
                + " VALUES (?,?,?,?,?)";
     

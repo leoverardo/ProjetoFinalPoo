@@ -5,8 +5,15 @@
  */
 package view;
 
+import Controller.ClienteController;
+import Controller.FuncionarioController;
+import Model.Clientes;
+import Model.Funcionario;
+import Utils.Utils;
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +26,7 @@ public class FrCadastroFuncionario extends javax.swing.JFrame {
      */
     public FrCadastroFuncionario() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
     }
 
@@ -46,7 +53,7 @@ public class FrCadastroFuncionario extends javax.swing.JFrame {
         edtEmail = new javax.swing.JTextField();
         edtSenha = new javax.swing.JPasswordField();
         edtConfirmSenha = new javax.swing.JPasswordField();
-        edtCPF = new javax.swing.JTextField();
+        edtCpf = new javax.swing.JTextField();
         btnVoltar = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
         edtCargo = new javax.swing.JTextField();
@@ -115,9 +122,19 @@ public class FrCadastroFuncionario extends javax.swing.JFrame {
         btnCadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCadastrarMouseClicked(evt);
+            }
+        });
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarActionPerformed(evt);
+            }
+        });
+        btnCadastrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnCadastrarKeyPressed(evt);
             }
         });
 
@@ -141,7 +158,7 @@ public class FrCadastroFuncionario extends javax.swing.JFrame {
                             .addComponent(edtSenha)
                             .addComponent(edtConfirmSenha)
                             .addComponent(lblCPF)
-                            .addComponent(edtCPF)
+                            .addComponent(edtCpf)
                             .addComponent(edtEmail)
                             .addComponent(edtNome)))
                     .addGroup(layout.createSequentialGroup()
@@ -179,7 +196,7 @@ public class FrCadastroFuncionario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblCPF)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(edtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(edtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,17 +220,97 @@ public class FrCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_edtEmailActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-    URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
+        URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
 
-    ImageIcon icon = new ImageIcon(caminhoImagem);
+        ImageIcon icon = new ImageIcon(caminhoImagem);
 
-    // Define o ícone da janela
-    this.setIconImage(icon.getImage());
+        // Define o ícone da janela
+        this.setIconImage(icon.getImage());
     }//GEN-LAST:event_formWindowOpened
 
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
         this.dispose();
     }//GEN-LAST:event_btnVoltarMouseClicked
+
+    private void btnCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseClicked
+        if (verificarCampos()) {
+
+            gravar();
+        }
+    }//GEN-LAST:event_btnCadastrarMouseClicked
+
+    private void btnCadastrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCadastrarKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            gravar();
+        }
+    }//GEN-LAST:event_btnCadastrarKeyPressed
+    public void gravar() {
+
+        Funcionario fun = new Funcionario();
+
+        String lSenha = new String(edtSenha.getPassword());
+        String lHashSenha = Utils.calcularHash(lSenha);
+        
+        fun.setCargo(edtCargo.getText());
+        fun.setNome(edtNome.getText());
+        fun.setEmail(edtEmail.getText());
+        fun.setSenha(lHashSenha);
+        fun.setCpf(edtCpf.getText());
+
+        FuncionarioController controller = new FuncionarioController();
+
+        if (controller.inserirFuncionario(fun)) {
+            JOptionPane.showMessageDialog(null,
+                    "Usuário gravado com sucesso");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "O cadastro não foi gravado");
+        }
+    }
+
+    public boolean verificarCampos() {
+
+        if (!edtNome.getText().matches("^[\\p{L} ]+$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Nome' possui formato inválido");
+            return false;
+        }
+
+        if (!edtEmail.getText().matches("^[a-z0-9._-]+@[a-z0-9._-]+.[a-z._]+$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Email' possui formato inválido");
+            return false;
+        }
+
+        if (new String(edtSenha.getPassword()).equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo 'Senha' em branco");
+            return false;
+        }
+
+        String lSenha = new String(edtSenha.getPassword());
+        String lConfirmaSenha = new String(edtConfirmSenha.getPassword());
+
+        if (!lSenha.equals(lConfirmaSenha)) {
+            JOptionPane.showMessageDialog(null, "As senhas não são iguais");
+            return false;
+        }
+
+        if (lSenha.length() < 6) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Senha' deve ter mais de 6 caracteres");
+            return false;
+        }
+
+        if (!edtCpf.getText().matches("^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}")) {//a-
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Nome' possui formato inválido");
+            return false;
+        }
+
+        return true;
+    }
 
     /**
      * @param args the command line arguments
@@ -254,9 +351,9 @@ public class FrCadastroFuncionario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JTextField edtCPF;
     private javax.swing.JTextField edtCargo;
     private javax.swing.JPasswordField edtConfirmSenha;
+    private javax.swing.JTextField edtCpf;
     private javax.swing.JTextField edtEmail;
     private javax.swing.JTextField edtNome;
     private javax.swing.JPasswordField edtSenha;

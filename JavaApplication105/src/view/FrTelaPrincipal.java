@@ -74,6 +74,11 @@ public class FrTelaPrincipal extends javax.swing.JFrame {
                 btnFuncionarioMouseClicked(evt);
             }
         });
+        btnFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFuncionarioActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
 
         btnCliente.setBackground(new java.awt.Color(51, 153, 255));
@@ -126,6 +131,10 @@ public class FrTelaPrincipal extends javax.swing.JFrame {
     //Torno a tela visível
     telaLoginClie.setVisible(true);
     }//GEN-LAST:event_btnClienteMouseClicked
+
+    private void btnFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments

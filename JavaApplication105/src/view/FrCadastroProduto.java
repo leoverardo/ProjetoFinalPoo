@@ -7,7 +7,7 @@ package view;
 
 /**
  *
- * @author aluno.saolucas   
+ * @author aluno.saolucas
  */
 public class FrCadastroProduto extends javax.swing.JDialog {
 
@@ -35,15 +35,15 @@ public class FrCadastroProduto extends javax.swing.JDialog {
         btnVoltar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtNomeProduto = new javax.swing.JTextPane();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
+        txtCategoria = new javax.swing.JTextPane();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
+        txtValidade = new javax.swing.JTextPane();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane4 = new javax.swing.JTextPane();
+        txtPreco = new javax.swing.JTextPane();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -58,6 +58,16 @@ public class FrCadastroProduto extends javax.swing.JDialog {
 
         btnSalvar.setBackground(new java.awt.Color(0, 0, 255));
         btnSalvar.setText("Salvar");
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
+        });
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnVoltar.setBackground(new java.awt.Color(255, 0, 0));
         btnVoltar.setText("Voltar");
@@ -71,21 +81,21 @@ public class FrCadastroProduto extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nome Produto");
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(txtNomeProduto);
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Categoria");
 
-        jScrollPane2.setViewportView(jTextPane2);
+        jScrollPane2.setViewportView(txtCategoria);
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Validade");
 
-        jScrollPane3.setViewportView(jTextPane3);
+        jScrollPane3.setViewportView(txtValidade);
 
-        jScrollPane4.setViewportView(jTextPane4);
+        jScrollPane4.setViewportView(txtPreco);
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -145,7 +155,7 @@ public class FrCadastroProduto extends javax.swing.JDialog {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(31, 31, 31)
                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSalvar)
@@ -169,6 +179,34 @@ public class FrCadastroProduto extends javax.swing.JDialog {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                String nome = txtNomeProduto.getText();
+                String categoria = txtCategoria.getText();
+                String validade = txtValidade.getText();
+                String precoStr = txtPreco.getText();
+
+                try {
+                    double preco = Double.parseDouble(precoStr);
+                    System.out.println("Produto cadastrado:");
+                    System.out.println("Nome: " + nome);
+                    System.out.println("Categoria: " + categoria);
+                    System.out.println("Validade: " + validade);
+                    System.out.println("Preço: R$" + preco);
+                } catch (NumberFormatException e) {
+                    javax.swing.JOptionPane.showMessageDialog(null, "Preço inválido!");
+                }
+            }
+        });
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -226,9 +264,9 @@ public class FrCadastroProduto extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
-    private javax.swing.JTextPane jTextPane3;
-    private javax.swing.JTextPane jTextPane4;
+    private javax.swing.JTextPane txtCategoria;
+    private javax.swing.JTextPane txtNomeProduto;
+    private javax.swing.JTextPane txtPreco;
+    private javax.swing.JTextPane txtValidade;
     // End of variables declaration//GEN-END:variables
 }
