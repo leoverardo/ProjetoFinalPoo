@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.Clientes;
-import Model.Produtos;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -66,6 +65,48 @@ public class ClienteController {
     return false;      
   }
     
+    public boolean alterarCliente(Clientes cli) {
+    String sql = "UPDATE clientes SET nome = ?, "
+            + " email = ?";
+
+    if (cli.getSenha() != null) {
+      sql = sql + " , senha = ? ";
+    }
+
+    sql = sql + " , cpf = ? WHERE idCliente = ?";
+
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+
+    try {
+      comando = gerenciador.prepararComando(sql);
+
+      comando.setString(1, cli.getNome());
+      comando.setString(2, cli.getEmail());
+
+      int numCampo = 3;
+      
+      if (cli.getSenha() != null) {
+        comando.setString(numCampo, cli.getSenha()); 
+        numCampo++;
+      }
+      
+      comando.setString(numCampo, cli.getCpf());
+      numCampo++;
+      comando.setInt(numCampo, cli.getIdCliente());
+
+      comando.executeUpdate();
+
+      return true;
+    } catch (SQLException ex) {
+      JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
+    } finally {
+      gerenciador.fecharConexao(comando);
+    }
+    return false;
+  }
+    
+    
     public List<Clientes> listarCliente() {
     String sql = "SELECT * FROM clientes";
     
@@ -85,7 +126,7 @@ public class ClienteController {
 
         Clientes clientes = new Clientes();
 
-        clientes.setIdCliente(resultado.getInt("idProduto"));
+        clientes.setIdCliente(resultado.getInt("idCliente"));
         clientes.setNome(resultado.getString("nome"));
         clientes.setEmail(resultado.getString("email"));
         clientes.setCpf(resultado.getString("cpf"));
@@ -122,7 +163,7 @@ public class ClienteController {
 
       if (resultado.next()) {
 
-        clientes.setIdCliente(resultado.getInt("idProduto"));
+        clientes.setIdCliente(resultado.getInt("idCliente"));
         clientes.setNome(resultado.getString("nome"));
         clientes.setEmail(resultado.getString("email"));
         clientes.setCpf(resultado.getString("cpf"));
