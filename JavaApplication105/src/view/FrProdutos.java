@@ -188,7 +188,7 @@ public class FrProdutos extends javax.swing.JDialog {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
-       
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -216,7 +216,7 @@ public class FrProdutos extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCadastrarMouseClicked
 
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
