@@ -5,11 +5,9 @@
  */
 package view;
 
-import Controller.ClienteController;
 import Controller.FuncionarioController;
-import Model.Clientes;
 import Model.Funcionario;
-import Utils.Utils;
+import utils.Utils;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 import javax.swing.ImageIcon;
@@ -100,6 +98,12 @@ public class FrCadastroFuncionario extends javax.swing.JFrame {
         edtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtEmailActionPerformed(evt);
+            }
+        });
+
+        edtCpf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                edtCpfKeyPressed(evt);
             }
         });
 
@@ -245,6 +249,12 @@ public class FrCadastroFuncionario extends javax.swing.JFrame {
             gravar();
         }
     }//GEN-LAST:event_btnCadastrarKeyPressed
+
+    private void edtCpfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCpfKeyPressed
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            gravar();
+        }
+    }//GEN-LAST:event_edtCpfKeyPressed
     public void gravar() {
 
         Funcionario fun = new Funcionario();

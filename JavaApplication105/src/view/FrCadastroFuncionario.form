@@ -213,6 +213,9 @@
     <Component class="javax.swing.JPasswordField" name="edtConfirmSenha">
     </Component>
     <Component class="javax.swing.JTextField" name="edtCpf">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="edtCpfKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnVoltar">
       <Properties>

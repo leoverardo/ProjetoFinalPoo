@@ -5,8 +5,13 @@
  */
 package view;
 
+import Controller.ClienteController;
+import Controller.FuncionarioController;
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import utils.Utils;
 
 /**
  *
@@ -61,11 +66,21 @@ public class FrLoginFuncionario extends javax.swing.JFrame {
                 edtSenhaActionPerformed(evt);
             }
         });
+        edtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                edtSenhaKeyPressed(evt);
+            }
+        });
 
         btnEntrar.setBackground(new java.awt.Color(51, 153, 255));
         btnEntrar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEntrar.setText("Entrar");
+        btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEntrarMouseClicked(evt);
+            }
+        });
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
@@ -192,6 +207,44 @@ public class FrLoginFuncionario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVoltarMouseClicked
 
+    private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
+        realizarLogin();
+    }//GEN-LAST:event_btnEntrarMouseClicked
+
+    private void edtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSenhaKeyPressed
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+      //Se foi teclado ENTER tenta fazer login
+      realizarLogin();
+    }
+    }//GEN-LAST:event_edtSenhaKeyPressed
+ private void realizarLogin() {
+    String email = edtEmail.getText();
+    String senha = new String(edtSenha.getPassword());
+    
+    if (email.equals("")) {
+      JOptionPane.showMessageDialog(null,
+              "Campo 'Email' em branco!");
+      return;
+    }
+
+    if (senha.equals("")) {
+      JOptionPane.showMessageDialog(null,
+              "Campo 'Senha' em branco!");
+      return;
+    }
+    
+    senha = Utils.calcularHash(senha);
+
+    FuncionarioController controller = new FuncionarioController();
+
+    boolean autenticado = controller.loginFuncionario(email, senha);
+
+    if (autenticado) {
+      JOptionPane.showMessageDialog(null, "Usuario logado ");
+    } else {
+      JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos");
+    }
+  }
     /**
      * @param args the command line arguments
      */

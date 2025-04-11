@@ -3,7 +3,7 @@ package view;
 
 import Controller.ClienteController;
 import Model.Clientes;
-import Utils.Utils;
+import utils.Utils;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 import javax.swing.ImageIcon;
@@ -68,6 +68,12 @@ public class FrCadastroCliente extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, -1, -1));
+
+        edtCpf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                edtCpfKeyPressed(evt);
+            }
+        });
         getContentPane().add(edtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 526, 446, 47));
 
         lblNome.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -178,6 +184,14 @@ public class FrCadastroCliente extends javax.swing.JFrame {
       gravar();
     }
     }//GEN-LAST:event_btnCadastrarKeyPressed
+
+    private void edtCpfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCpfKeyPressed
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            gravar();
+        }
+    }//GEN-LAST:event_edtCpfKeyPressed
+    
+    
     public void gravar() {
       
         Clientes clientes = new Clientes();
