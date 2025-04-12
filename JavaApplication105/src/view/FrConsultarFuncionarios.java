@@ -5,9 +5,7 @@
  */
 package view;
 
-import Controller.ClienteController;
 import Controller.FuncionarioController;
-import Model.Clientes;
 import Model.Funcionario;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -226,7 +224,7 @@ public void pesquisar(){
         
         List<Funcionario> listaFuncionario = controller.listarFuncionario();
         
-        for(Clientes fun: listaFuncionario){
+        for(Funcionario fun: listaFuncionario){
             Object[] linha = {
                 fun.getIdFuncionario(),
                 fun.getNome(),
@@ -243,10 +241,10 @@ public void pesquisar(){
             int linhaSelecionada = tblFuncionarios.getSelectedRow();
             String textoCelula = tblFuncionarios.getValueAt(linhaSelecionada, 0).toString();
 
-            int idCliente = Integer.parseInt(textoCelula);
+            int idFuncionario = Integer.parseInt(textoCelula);
 
             FuncionarioController controller = new FuncionarioController();
-            if(controller.deletarFuncionario(idCliente)){
+            if(controller.deletarFuncionario(idFuncionario)){
                 pesquisar();
                 JOptionPane.showMessageDialog(rootPane, "O usuário foi deletado");
             }else{
@@ -273,11 +271,11 @@ public void pesquisar(){
             int linhaSelecionada = tblFuncionarios.getSelectedRow();
             String textoCelula = tblFuncionarios.getValueAt(linhaSelecionada, 0).toString();
 
-            int idCliente = Integer.parseInt(textoCelula);
+            int idFuncionario = Integer.parseInt(textoCelula);
 
-            FrAterarCliente telaAltCli = new FrAterarCliente(null, rootPaneCheckingEnabled, idCliente);
+            FrAlterarFuncionario telaAltFun = new FrAlterarFuncionario(null, rootPaneCheckingEnabled, 0);
 
-            telaAltCli.setVisible(true);
+            telaAltFun.setVisible(true);
             this.setLocationRelativeTo(null);
             pesquisar();
         }
