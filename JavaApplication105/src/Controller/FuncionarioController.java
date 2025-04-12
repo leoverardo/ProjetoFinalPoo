@@ -60,4 +60,26 @@ public class FuncionarioController {
     }
     return false;      
   }
+    public boolean deletarFuncionario(int idFuncionario) {
+    String sql = "DELETE FROM clientes "
+               + "WHERE idFuncionario = ?";
+
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+
+    try {
+      comando = gerenciador.prepararComando(sql);
+      comando.setInt(1, idFuncionario);
+
+      comando.executeUpdate();
+
+      return true;
+    } catch (SQLException ex) {
+      JOptionPane.showMessageDialog(null, "Erro ao excluir: "
+              + ex);
+    } finally {
+      gerenciador.fecharConexao(comando);
+    }
+    return false;
+  }
 }

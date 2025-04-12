@@ -212,7 +212,11 @@ public class FrLoginFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-        realizarLogin();
+       FrMenu telaMenu = new FrMenu();
+           realizarLogin();
+       telaMenu.setVisible(true);
+       this.dispose();
+        
     }//GEN-LAST:event_btnEntrarMouseClicked
 
     private void edtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSenhaKeyPressed

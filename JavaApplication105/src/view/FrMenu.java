@@ -39,7 +39,7 @@ public class FrMenu extends javax.swing.JFrame {
         miListarCli = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        miListarFun = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,9 +89,14 @@ public class FrMenu extends javax.swing.JFrame {
         jMenuItem3.setText("Cadrastrar");
         jMenu4.add(jMenuItem3);
 
-        jMenuItem5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem5.setText("Listar");
-        jMenu4.add(jMenuItem5);
+        miListarFun.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        miListarFun.setText("Listar");
+        miListarFun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miListarFunActionPerformed(evt);
+            }
+        });
+        jMenu4.add(miListarFun);
 
         jMenuBar1.add(jMenu4);
 
@@ -123,6 +128,11 @@ public class FrMenu extends javax.swing.JFrame {
        FrConsultarCliente telaConCli = new FrConsultarCliente(this,rootPaneCheckingEnabled);
            telaConCli.setVisible(true);
     }//GEN-LAST:event_miListarCliActionPerformed
+
+    private void miListarFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miListarFunActionPerformed
+      FrConsultarFuncionarios telaConFun = new FrConsultarFuncionarios(this,rootPaneCheckingEnabled);
+           telaConFun.setVisible(true);
+    }//GEN-LAST:event_miListarFunActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,8 +178,8 @@ public class FrMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem miCadCli;
     private javax.swing.JMenuItem miListarCli;
+    private javax.swing.JMenuItem miListarFun;
     // End of variables declaration//GEN-END:variables
 }
