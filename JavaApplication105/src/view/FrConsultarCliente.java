@@ -7,24 +7,24 @@ package view;
 
 import Controller.ClienteController;
 import Model.Clientes;
-import java.net.URL;
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import utils.Utils;
 
 /**
  *
  * @author aluno.saolucas
  */
-public class FrConsultaCliente extends javax.swing.JFrame {
+public class FrConsultarCliente extends javax.swing.JDialog {
 
     /**
-     * Creates new form FrConsultaCliente
+     * Creates new form FrConsultarCliente
      */
-    public FrConsultaCliente() {
+    public FrConsultarCliente(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -44,15 +44,9 @@ public class FrConsultaCliente extends javax.swing.JFrame {
         btnListar = new javax.swing.JToggleButton();
         btnAlterar = new javax.swing.JToggleButton();
         btnVoltar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Buscar.setBackground(new java.awt.Color(204, 204, 204));
         Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -60,12 +54,10 @@ public class FrConsultaCliente extends javax.swing.JFrame {
                 BuscarMouseClicked(evt);
             }
         });
-        Buscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Clientes");
-        Buscar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
 
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,8 +87,6 @@ public class FrConsultaCliente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblClientes);
 
-        Buscar.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 359, 330));
-
         btnExcluir2.setBackground(new java.awt.Color(255, 0, 51));
         btnExcluir2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnExcluir2.setForeground(new java.awt.Color(0, 0, 0));
@@ -111,7 +101,6 @@ public class FrConsultaCliente extends javax.swing.JFrame {
                 btnExcluir2ActionPerformed(evt);
             }
         });
-        Buscar.add(btnExcluir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 110, -1));
 
         btnListar.setBackground(new java.awt.Color(0, 153, 255));
         btnListar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -127,7 +116,6 @@ public class FrConsultaCliente extends javax.swing.JFrame {
                 btnListarActionPerformed(evt);
             }
         });
-        Buscar.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 110, -1));
 
         btnAlterar.setBackground(new java.awt.Color(0, 153, 255));
         btnAlterar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -143,7 +131,6 @@ public class FrConsultaCliente extends javax.swing.JFrame {
                 btnAlterarActionPerformed(evt);
             }
         });
-        Buscar.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 120, -1));
 
         btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
         btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -159,41 +146,75 @@ public class FrConsultaCliente extends javax.swing.JFrame {
                 btnVoltarActionPerformed(evt);
             }
         });
-        Buscar.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 120, -1));
-
-        btnBuscar.setBackground(new java.awt.Color(0, 153, 255));
-        btnBuscar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
-        btnBuscar.setText("Buscar");
-        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBuscarMouseClicked(evt);
-            }
-        });
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-        Buscar.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 110, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginCliente2.png"))); // NOI18N
-        Buscar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, 70));
+
+        javax.swing.GroupLayout BuscarLayout = new javax.swing.GroupLayout(Buscar);
+        Buscar.setLayout(BuscarLayout);
+        BuscarLayout.setHorizontalGroup(
+            BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BuscarLayout.createSequentialGroup()
+                .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BuscarLayout.createSequentialGroup()
+                        .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(BuscarLayout.createSequentialGroup()
+                                .addGap(107, 107, 107)
+                                .addComponent(btnExcluir2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BuscarLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(BuscarLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(BuscarLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(7, 7, 7)
+                                .addComponent(jLabel3)
+                                .addGap(146, 146, 146)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        BuscarLayout.setVerticalGroup(
+            BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BuscarLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BuscarLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnListar)
+                    .addComponent(btnAlterar))
+                .addGap(11, 11, 11)
+                .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnExcluir2)
+                    .addComponent(btnVoltar))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+            .addComponent(Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-     public void pesquisar(){
+    public void pesquisar(){
         DefaultTableModel modelotabela = (DefaultTableModel) tblClientes.getModel();
         
         modelotabela.setNumRows(0);
@@ -212,15 +233,14 @@ public class FrConsultaCliente extends javax.swing.JFrame {
         modelotabela.addRow(linha);
         }
     }
-    
     private void btnExcluir2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluir2MouseClicked
         if(tblClientes.getSelectedRow() != -1){
-            
+
             int linhaSelecionada = tblClientes.getSelectedRow();
             String textoCelula = tblClientes.getValueAt(linhaSelecionada, 0).toString();
-            
+
             int idCliente = Integer.parseInt(textoCelula);
-            
+
             ClienteController controller = new ClienteController();
             if(controller.deletarCliente(idCliente)){
                 pesquisar();
@@ -228,7 +248,7 @@ public class FrConsultaCliente extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(rootPane, "O usuário não foi deletado");
             }
-           
+
         }
     }//GEN-LAST:event_btnExcluir2MouseClicked
 
@@ -237,7 +257,7 @@ public class FrConsultaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluir2ActionPerformed
 
     private void btnListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarMouseClicked
-       pesquisar();
+        pesquisar();
     }//GEN-LAST:event_btnListarMouseClicked
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
@@ -245,7 +265,18 @@ public class FrConsultaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
-        // TODO add your handling code here:
+        if(tblClientes.getSelectedRow() != -1){
+            int linhaSelecionada = tblClientes.getSelectedRow();
+            String textoCelula = tblClientes.getValueAt(linhaSelecionada, 0).toString();
+
+            int idCliente = Integer.parseInt(textoCelula);
+
+            FrAterarCliente telaAltCli = new FrAterarCliente(null, rootPaneCheckingEnabled, idCliente);
+
+            telaAltCli.setVisible(true);
+            this.setLocationRelativeTo(null);
+            pesquisar();
+        }
     }//GEN-LAST:event_btnAlterarMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -260,36 +291,8 @@ public class FrConsultaCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarMouseClicked
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-    URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
-
-    ImageIcon icon = new ImageIcon(caminhoImagem);
-
-    // Define o ícone da janela
-    this.setIconImage(icon.getImage());
-    }//GEN-LAST:event_formWindowOpened
-
     private void BuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarMouseClicked
-        if(tblClientes.getSelectedRow() != -1){
-            int linhaSelecionada = tblClientes.getSelectedRow();
-            String textoCelula = tblClientes.getValueAt(linhaSelecionada, 0).toString();
-            
-            int pkUsuario = Integer.parseInt(textoCelula);
-            
-            FrAlterarCliente telaAltCli = new FrAlterarCliente(null, rootPaneCheckingEnabled, pkUsuario);
-            
-            telaAltCli.setVisible(true);
-            this.setLocationRelativeTo(null);
-            pesquisar();
-        }
+
     }//GEN-LAST:event_BuscarMouseClicked
 
     /**
@@ -309,20 +312,27 @@ public class FrConsultaCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrConsultaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrConsultaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrConsultaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrConsultaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrConsultaCliente().setVisible(true);
+                FrConsultarCliente dialog = new FrConsultarCliente(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -330,9 +340,6 @@ public class FrConsultaCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Buscar;
     private javax.swing.JToggleButton btnAlterar;
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JToggleButton btnExcluir;
-    private javax.swing.JToggleButton btnExcluir1;
     private javax.swing.JToggleButton btnExcluir2;
     private javax.swing.JToggleButton btnListar;
     private javax.swing.JButton btnVoltar;

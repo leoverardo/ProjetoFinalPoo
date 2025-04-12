@@ -7,7 +7,7 @@ package view;
 
 import Controller.ClienteController;
 import Model.Clientes;
-import Utils.Utils;
+import utils.Utils;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -28,14 +28,14 @@ public class FrAterarCliente extends javax.swing.JDialog {
     public void setIdCliente(int idCliente){
     this.idCliente = idCliente;
   }
-    public FrAterarCliente(java.awt.Frame parent, boolean modal) {
+    public FrAterarCliente(java.awt.Frame parent, boolean modal,int idCliente) {
         super(parent, modal);
         initComponents();
         
         setIdCliente(idCliente);
         
         carregarCliente();
-        
+        this.setLocationRelativeTo(null);
     }
 
     
@@ -88,6 +88,10 @@ public class FrAterarCliente extends javax.swing.JDialog {
                 edtEmailActionPerformed(evt);
             }
         });
+
+        edtSenha.setEditable(false);
+
+        edtConfirmSenha.setEditable(false);
 
         btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
         btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -155,6 +159,7 @@ public class FrAterarCliente extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Código:");
 
+        edtCodigo.setEditable(false);
         edtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtCodigoActionPerformed(evt);
@@ -315,7 +320,7 @@ public class FrAterarCliente extends javax.swing.JDialog {
     if (edtSenha.isEditable()) {
       String senha = new String(edtSenha.getPassword());
 
-      if (senha.length() < 8) {
+      if (senha.length() < 6) {
         JOptionPane.showMessageDialog(null,
                 "O campo 'Senha' deve ser maior que 8 caracteres");
         return false;
@@ -326,6 +331,11 @@ public class FrAterarCliente extends javax.swing.JDialog {
                 "As senhas não são iguais");
         return false;
       }
+        if (!edtCpf.getText().matches("^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}")) {//a-
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Nome' possui formato inválido");
+            return false;
+        }
     }
 
     return true;
@@ -337,6 +347,7 @@ public class FrAterarCliente extends javax.swing.JDialog {
     cliente.setIdCliente(idCliente); 
     cliente.setNome(edtNome.getText());
     cliente.setEmail(edtEmail.getText());
+    cliente.setCpf(edtCpf.getText());
 
     if (edtSenha.isEditable()) {
       String senha = new String(edtSenha.getPassword());
@@ -393,7 +404,7 @@ public class FrAterarCliente extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrAterarCliente dialog = new FrAterarCliente(new javax.swing.JFrame(), true);
+                FrAterarCliente dialog = new FrAterarCliente(new javax.swing.JFrame(), true, 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

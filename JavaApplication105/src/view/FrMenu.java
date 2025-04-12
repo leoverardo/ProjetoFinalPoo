@@ -16,6 +16,8 @@ public class FrMenu extends javax.swing.JFrame {
      */
     public FrMenu() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -33,8 +35,8 @@ public class FrMenu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        miCadCli = new javax.swing.JMenuItem();
+        miListarCli = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -61,13 +63,23 @@ public class FrMenu extends javax.swing.JFrame {
 
         jMenu3.setText("Clientes");
 
-        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem2.setText("Cadastrar");
-        jMenu3.add(jMenuItem2);
+        miCadCli.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        miCadCli.setText("Cadastrar");
+        jMenu3.add(miCadCli);
 
-        jMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem4.setText("Listar");
-        jMenu3.add(jMenuItem4);
+        miListarCli.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        miListarCli.setText("Listar");
+        miListarCli.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                miListarCliMouseClicked(evt);
+            }
+        });
+        miListarCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miListarCliActionPerformed(evt);
+            }
+        });
+        jMenu3.add(miListarCli);
 
         jMenuBar1.add(jMenu3);
 
@@ -102,6 +114,15 @@ public class FrMenu extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void miListarCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miListarCliMouseClicked
+          
+    }//GEN-LAST:event_miListarCliMouseClicked
+
+    private void miListarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miListarCliActionPerformed
+       FrConsultarCliente telaConCli = new FrConsultarCliente(this,rootPaneCheckingEnabled);
+           telaConCli.setVisible(true);
+    }//GEN-LAST:event_miListarCliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,9 +167,9 @@ public class FrMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem miCadCli;
+    private javax.swing.JMenuItem miListarCli;
     // End of variables declaration//GEN-END:variables
 }

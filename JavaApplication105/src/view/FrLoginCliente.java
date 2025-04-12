@@ -164,12 +164,20 @@ public class FrLoginCliente extends javax.swing.JFrame {
 
     private void edtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSenhaKeyPressed
          if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-          realizarLogin();
+          FrMenu telaMenu = new FrMenu();
+           realizarLogin();
+            telaMenu.setVisible(true);
+            this.dispose();
+        
     }
     }//GEN-LAST:event_edtSenhaKeyPressed
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-       realizarLogin();
+       FrMenu telaMenu = new FrMenu();
+           realizarLogin();
+       telaMenu.setVisible(true);
+       this.dispose();
+        
     }//GEN-LAST:event_btnEntrarMouseClicked
 
     
