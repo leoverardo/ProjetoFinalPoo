@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Clientes;
 import Model.Produtos;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -128,6 +129,30 @@ public class ProdutoController {
     } catch (SQLException ex) {
       JOptionPane.showMessageDialog(null, "Erro ao excluir: "
               + ex);
+    } finally {
+      gerenciador.fecharConexao(comando);
+    }
+    return false;
+  }
+    public boolean alterarProduto(Produtos prod) {
+    String sql = "UPDATE produtos SET preco = ?, "
+            + " validade = ? WHERE idProduto = ?";
+
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+
+    try {
+      comando = gerenciador.prepararComando(sql);
+
+      comando.setString(1, prod.getNome());
+      comando.setDouble(2, prod.getPreco());
+      comando.setInt(3, prod.getIdProduto());
+
+      comando.executeUpdate();
+
+      return true;
+    } catch (SQLException ex) {
+      JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
     } finally {
       gerenciador.fecharConexao(comando);
     }
