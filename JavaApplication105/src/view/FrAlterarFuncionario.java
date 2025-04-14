@@ -29,6 +29,23 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
     }
 
+    
+    
+    public void carregarFuncionario() {
+  
+    FuncionarioController controller = new FuncionarioController();
+    Funcionario funcionario  = controller.buscarPorId(idFuncionario);
+
+    String codigo = String.valueOf(funcionario.getIdFuncionario());
+    edtCodigo.setText(codigo);
+    edtCargo.setText(funcionario.getCargo());
+    edtNome.setText(funcionario.getNome());
+    edtEmail.setText(funcionario.getEmail());
+    edtCpf.setText(funcionario.getCpf());
+
+  }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,6 +72,8 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        edtCodigo = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         lblCargo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -138,7 +157,7 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Footlight MT Light", 1, 30)); // NOI18N
-        jLabel1.setText("Cadastrar Funcionário");
+        jLabel1.setText("Alterar Funcionário");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 400, -1));
 
         jLabel2.setFont(new java.awt.Font("Footlight MT Light", 1, 24)); // NOI18N
@@ -147,6 +166,17 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginFuncionario.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        edtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtCodigoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 60, 20));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Código:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -192,6 +222,10 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
             gravar();
         }
     }//GEN-LAST:event_btnCadastrarKeyPressed
+
+    private void edtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtCodigoActionPerformed
 
     
     
@@ -322,6 +356,7 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnVoltar2;
     private javax.swing.JTextField edtCargo;
+    private javax.swing.JTextField edtCodigo;
     private javax.swing.JPasswordField edtConfirmSenha;
     private javax.swing.JTextField edtCpf;
     private javax.swing.JTextField edtEmail;
@@ -329,6 +364,7 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
     private javax.swing.JPasswordField edtSenha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCPF;
