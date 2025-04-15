@@ -8,14 +8,16 @@
  *
  * @author aluno.saolucas
  */
-public class FrProdutos extends javax.swing.JDialog {
+public class FrConsultarProdutos extends javax.swing.JDialog {
 
     /**
      * Creates new form FrProdutos
      */
-    public FrProdutos(java.awt.Frame parent, boolean modal) {
+    public FrConsultarProdutos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -37,7 +39,6 @@ public class FrProdutos extends javax.swing.JDialog {
         btnListar = new javax.swing.JToggleButton();
         btnCadastrar = new javax.swing.JToggleButton();
         btnVoltar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jInternalFrame1 = new javax.swing.JInternalFrame();
 
@@ -100,7 +101,7 @@ public class FrProdutos extends javax.swing.JDialog {
                 btnListarActionPerformed(evt);
             }
         });
-        Buscar.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 110, -1));
+        Buscar.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 110, -1));
 
         btnCadastrar.setBackground(new java.awt.Color(0, 153, 255));
         btnCadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -116,7 +117,7 @@ public class FrProdutos extends javax.swing.JDialog {
                 btnCadastrarActionPerformed(evt);
             }
         });
-        Buscar.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 120, -1));
+        Buscar.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, 120, -1));
 
         btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
         btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -133,22 +134,6 @@ public class FrProdutos extends javax.swing.JDialog {
             }
         });
         Buscar.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 120, -1));
-
-        btnBuscar.setBackground(new java.awt.Color(0, 153, 255));
-        btnBuscar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
-        btnBuscar.setText("Buscar");
-        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBuscarMouseClicked(evt);
-            }
-        });
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-        Buscar.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 110, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cesta-de-compras.png"))); // NOI18N
         Buscar.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
@@ -191,10 +176,6 @@ public class FrProdutos extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirActionPerformed
@@ -202,10 +183,6 @@ public class FrProdutos extends javax.swing.JDialog {
     private void btnListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnListarMouseClicked
-
-    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
         // TODO add your handling code here:
@@ -240,20 +217,21 @@ public class FrProdutos extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrProdutos dialog = new FrProdutos(new javax.swing.JFrame(), true);
+                FrConsultarProdutos dialog = new FrConsultarProdutos(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -267,7 +245,6 @@ public class FrProdutos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Buscar;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JToggleButton btnCadastrar;
     private javax.swing.JToggleButton btnExcluir;
     private javax.swing.JToggleButton btnListar;

@@ -135,7 +135,7 @@ public class ProdutoController {
     return false;
   }
     public boolean alterarProduto(Produtos prod) {
-    String sql = "UPDATE produtos SET preco = ?, "
+    String sql = "UPDATE produtos SET nome=?, preco = ?, "
             + " validade = ? WHERE idProduto = ?";
 
     GerenciadorConexao gerenciador = new GerenciadorConexao();
@@ -146,7 +146,8 @@ public class ProdutoController {
 
       comando.setString(1, prod.getNome());
       comando.setDouble(2, prod.getPreco());
-      comando.setInt(3, prod.getIdProduto());
+      comando.setString(3, prod.getValidade());
+      comando.setInt(4, prod.getIdProduto());
 
       comando.executeUpdate();
 

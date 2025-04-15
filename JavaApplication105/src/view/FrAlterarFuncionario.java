@@ -19,6 +19,10 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
 
     
     private int idFuncionario;
+    
+    public void setIdFuncionario(int idFuncionario){
+        this.idFuncionario = idFuncionario;
+    }
     /**
      * Creates new form AlterarFuncionario
      */
@@ -27,6 +31,9 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
         initComponents();
         
         this.setLocationRelativeTo(null);
+        
+        setIdFuncionario(idFuncionario);
+        carregarFuncionario();
     }
 
     

@@ -212,11 +212,12 @@ public class FrLoginFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-       FrMenu telaMenu = new FrMenu();
-           realizarLogin();
+      FrMenu telaMenu = new FrMenu();
+           if(realizarLogin()){
        telaMenu.setVisible(true);
+           }else{
        this.dispose();
-        
+           }
     }//GEN-LAST:event_btnEntrarMouseClicked
 
     private void edtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSenhaKeyPressed
@@ -225,20 +226,18 @@ public class FrLoginFuncionario extends javax.swing.JFrame {
       realizarLogin();
     }
     }//GEN-LAST:event_edtSenhaKeyPressed
- private void realizarLogin() {
+ private boolean realizarLogin() {
     String email = edtEmail.getText();
     String senha = new String(edtSenha.getPassword());
     
     if (email.equals("")) {
       JOptionPane.showMessageDialog(null,
               "Campo 'Email' em branco!");
-      return;
     }
 
     if (senha.equals("")) {
       JOptionPane.showMessageDialog(null,
               "Campo 'Senha' em branco!");
-      return;
     }
     
     senha = Utils.calcularHash(senha);
@@ -249,9 +248,11 @@ public class FrLoginFuncionario extends javax.swing.JFrame {
 
     if (autenticado) {
       JOptionPane.showMessageDialog(null, "Usuario logado ");
+      return true;
     } else {
       JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos");
     }
+    return false;
   }
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed

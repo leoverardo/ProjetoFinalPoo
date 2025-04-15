@@ -32,13 +32,14 @@ public class FrMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        miCadastrarProd = new javax.swing.JMenu();
+        miConProd = new javax.swing.JMenuItem();
+        miCadastro = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         miCadCli = new javax.swing.JMenuItem();
         miListarCli = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        miCadFun = new javax.swing.JMenuItem();
         miListarFun = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,22 +47,50 @@ public class FrMenu extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoMercado (1).jpg"))); // NOI18N
 
         jMenu1.setText("Inicio");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Produtos");
-
-        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem1.setText("Consultar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
 
-        jMenuBar1.add(jMenu2);
+        miCadastrarProd.setText("Produtos");
+        miCadastrarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCadastrarProdActionPerformed(evt);
+            }
+        });
+
+        miConProd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        miConProd.setText("Consultar");
+        miConProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConProdActionPerformed(evt);
+            }
+        });
+        miCadastrarProd.add(miConProd);
+
+        miCadastro.setText("Cadastrar");
+        miCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCadastroActionPerformed(evt);
+            }
+        });
+        miCadastrarProd.add(miCadastro);
+
+        jMenuBar1.add(miCadastrarProd);
 
         jMenu3.setText("Clientes");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
 
         miCadCli.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         miCadCli.setText("Cadastrar");
@@ -85,9 +114,14 @@ public class FrMenu extends javax.swing.JFrame {
 
         jMenu4.setText("Funcionarios");
 
-        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem3.setText("Cadrastrar");
-        jMenu4.add(jMenuItem3);
+        miCadFun.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        miCadFun.setText("Cadrastrar");
+        miCadFun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCadFunActionPerformed(evt);
+            }
+        });
+        jMenu4.add(miCadFun);
 
         miListarFun.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         miListarFun.setText("Listar");
@@ -116,9 +150,10 @@ public class FrMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void miConProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConProdActionPerformed
+        FrConsultarProduto telaConProduto = new FrConsultarProduto(this, rootPaneCheckingEnabled);
+        telaConProduto.setVisible(true);
+    }//GEN-LAST:event_miConProdActionPerformed
 
     private void miListarCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miListarCliMouseClicked
           
@@ -133,6 +168,37 @@ public class FrMenu extends javax.swing.JFrame {
       FrConsultarFuncionarios telaConFun = new FrConsultarFuncionarios(this,rootPaneCheckingEnabled);
            telaConFun.setVisible(true);
     }//GEN-LAST:event_miListarFunActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        this.dispose();
+        FrTelaPrincipal telaPrincipal = new FrTelaPrincipal();
+        
+        telaPrincipal.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void miCadFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCadFunActionPerformed
+        FrCadastroFuncionario telaCadFun = new FrCadastroFuncionario();
+        telaCadFun.setVisible(true);
+    }//GEN-LAST:event_miCadFunActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        FrCadastroCliente telaCadCli = new FrCadastroCliente();
+        telaCadCli.setVisible(true);
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void miCadastrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCadastrarProdActionPerformed
+        FrCadastroProduto telaCadProd = new FrCadastroProduto(this, rootPaneCheckingEnabled);
+        telaCadProd.setVisible(true);
+    }//GEN-LAST:event_miCadastrarProdActionPerformed
+
+    private void miCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCadastroActionPerformed
+       FrCadastroProduto telaCadProd = new FrCadastroProduto(this, rootPaneCheckingEnabled);
+        telaCadProd.setVisible(true);
+    }//GEN-LAST:event_miCadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,13 +238,14 @@ public class FrMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem miCadCli;
+    private javax.swing.JMenuItem miCadFun;
+    private javax.swing.JMenu miCadastrarProd;
+    private javax.swing.JMenuItem miCadastro;
+    private javax.swing.JMenuItem miConProd;
     private javax.swing.JMenuItem miListarCli;
     private javax.swing.JMenuItem miListarFun;
     // End of variables declaration//GEN-END:variables
