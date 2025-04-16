@@ -29,18 +29,24 @@ public class FrMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu2 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         miCadastrarProd = new javax.swing.JMenu();
-        miConProd = new javax.swing.JMenuItem();
         miCadastro = new javax.swing.JMenuItem();
+        miConProd = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         miCadCli = new javax.swing.JMenuItem();
         miListarCli = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         miCadFun = new javax.swing.JMenuItem();
         miListarFun = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        miCadVend = new javax.swing.JMenuItem();
+        miConVend = new javax.swing.JMenuItem();
+
+        jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
@@ -67,6 +73,14 @@ public class FrMenu extends javax.swing.JFrame {
             }
         });
 
+        miCadastro.setText("Cadastrar");
+        miCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCadastroActionPerformed(evt);
+            }
+        });
+        miCadastrarProd.add(miCadastro);
+
         miConProd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         miConProd.setText("Consultar");
         miConProd.addActionListener(new java.awt.event.ActionListener() {
@@ -75,14 +89,6 @@ public class FrMenu extends javax.swing.JFrame {
             }
         });
         miCadastrarProd.add(miConProd);
-
-        miCadastro.setText("Cadastrar");
-        miCadastro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miCadastroActionPerformed(evt);
-            }
-        });
-        miCadastrarProd.add(miCadastro);
 
         jMenuBar1.add(miCadastrarProd);
 
@@ -134,6 +140,26 @@ public class FrMenu extends javax.swing.JFrame {
         jMenu4.add(miListarFun);
 
         jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("Vendas");
+
+        miCadVend.setText("Cadastrar");
+        miCadVend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCadVendActionPerformed(evt);
+            }
+        });
+        jMenu5.add(miCadVend);
+
+        miConVend.setText("Consultar");
+        miConVend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConVendActionPerformed(evt);
+            }
+        });
+        jMenu5.add(miConVend);
+
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -201,6 +227,15 @@ public class FrMenu extends javax.swing.JFrame {
         telaCadProd.setVisible(true);
     }//GEN-LAST:event_miCadastroActionPerformed
 
+    private void miConVendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConVendActionPerformed
+        FrConsultarVendas telaConVendas = new FrConsultarVendas(this, rootPaneCheckingEnabled);
+        telaConVendas.setVisible(true);
+    }//GEN-LAST:event_miConVendActionPerformed
+
+    private void miCadVendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCadVendActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miCadVendActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -239,14 +274,18 @@ public class FrMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem miCadCli;
     private javax.swing.JMenuItem miCadFun;
+    private javax.swing.JMenuItem miCadVend;
     private javax.swing.JMenu miCadastrarProd;
     private javax.swing.JMenuItem miCadastro;
     private javax.swing.JMenuItem miConProd;
+    private javax.swing.JMenuItem miConVend;
     private javax.swing.JMenuItem miListarCli;
     private javax.swing.JMenuItem miListarFun;
     // End of variables declaration//GEN-END:variables
