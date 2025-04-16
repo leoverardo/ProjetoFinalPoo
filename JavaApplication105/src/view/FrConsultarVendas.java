@@ -55,7 +55,6 @@ public class FrConsultarVendas extends javax.swing.JDialog {
         });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Vendas");
 
         tblVendas.setModel(new javax.swing.table.DefaultTableModel(
@@ -88,7 +87,6 @@ public class FrConsultarVendas extends javax.swing.JDialog {
 
         btnExcluir4.setBackground(new java.awt.Color(255, 0, 51));
         btnExcluir4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnExcluir4.setForeground(new java.awt.Color(0, 0, 0));
         btnExcluir4.setText("Excluir");
         btnExcluir4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -103,7 +101,6 @@ public class FrConsultarVendas extends javax.swing.JDialog {
 
         btnListar.setBackground(new java.awt.Color(0, 153, 255));
         btnListar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnListar.setForeground(new java.awt.Color(0, 0, 0));
         btnListar.setText("Listar");
         btnListar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,7 +115,6 @@ public class FrConsultarVendas extends javax.swing.JDialog {
 
         btnAlterar.setBackground(new java.awt.Color(0, 153, 255));
         btnAlterar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
         btnAlterar.setText("Alterar");
         btnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -133,7 +129,6 @@ public class FrConsultarVendas extends javax.swing.JDialog {
 
         btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
         btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
         btnVoltar.setText("Voltar");
         btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -226,9 +221,9 @@ public void pesquisar(){
         for(Vendas vend: listaVendas){
             Object[] linha = {
                 vend.getIdVenda(),
-                vend.getIdProduto(),
-                vend.getIdCliente(),
-                vend.getIdFuncionario(),
+                vend.getNomeCliente(),
+                vend.getNomeFuncionario(),
+                vend.getNomeProduto(),
                 vend.getValorVenda()
             };
         modelotabela.addRow(linha);

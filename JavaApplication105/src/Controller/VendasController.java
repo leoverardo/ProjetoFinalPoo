@@ -38,7 +38,7 @@ public class VendasController {
   }
     
     public List<Vendas> listarVendas() {
-    String sql = "SELECT vendas.idVenda, clientes.nome, funcionarios.nome, produtos.nome, vendas.valorVenda "
+    String sql = "SELECT vendas.idVenda as idVenda, clientes.nome as NomeCliente, funcionarios.nome as NomeFuncionario, produtos.nome as NomeProduto, vendas.valorVenda "
             + "from vendas join clientes on vendas.idCliente = clientes.idCliente join "
             + "funcionarios on vendas.idFuncionario = funcionarios.idFuncionario join "
             + "produtos on vendas.idProduto = produtos.idProduto";
@@ -59,10 +59,10 @@ public class VendasController {
 
         Vendas venda = new Vendas();
 
-        venda.setIdFuncionario(resultado.getInt("idVenda"));
-        venda.setIdProduto(resultado.getInt("idProduto"));
-        venda.setIdCliente(resultado.getInt("idCliente"));
-        venda.setIdFuncionario(resultado.getInt("idFuncionario"));
+        venda.setIdVenda(resultado.getInt("idVenda"));
+        venda.setNomeCliente(resultado.getString("NomeCliente"));
+        venda.setNomeFuncionario(resultado.getString("NomeFuncionario"));
+        venda.setNomeProduto(resultado.getString("NomeProduto"));
         venda.setValorVenda(resultado.getDouble("valorVenda"));
 
         listaVendas.add(venda);
@@ -79,10 +79,10 @@ public class VendasController {
   }
   
     public Vendas buscarPorIdVenda(int idVenda) {
-    String sql = "SELECT vendas.idVenda, clientes.nome, funcionarios.nome, produtos.nome, vendas.valorVenda "
-            + "from vendas join clientes on vendas.idCliente = clientes.idCliente "
-            + "join funcionarios on vendas.idFuncionario = funcionarios.idFuncionario "
-            + "join produtos on vendas.idProduto = produtos.idProduto"
+    String sql = "SELECT vendas.idVenda as idVenda, clientes.nome as NomeCliente, funcionarios.nome as NomeFuncionario, produtos.nome as NomeProduto, vendas.valorVenda "
+            + "from vendas join clientes on vendas.idCliente = clientes.idCliente join "
+            + "funcionarios on vendas.idFuncionario = funcionarios.idFuncionario join "
+            + "produtos on vendas.idProduto = produtos.idProduto"
             + " where vendas.idVenda = ?";
 
     GerenciadorConexao gerenciador = new GerenciadorConexao();
@@ -100,10 +100,10 @@ public class VendasController {
 
       if (resultado.next()) {
 
-        venda.setIdFuncionario(resultado.getInt("idVenda"));
-        venda.setIdProduto(resultado.getInt("idProduto"));
-        venda.setIdCliente(resultado.getInt("idCliente"));
-        venda.setIdFuncionario(resultado.getInt("idFuncionario"));
+        venda.setIdVenda(resultado.getInt("idVenda"));
+        venda.setNomeCliente(resultado.getString("NomeCliente"));
+        venda.setNomeFuncionario(resultado.getString("NomeFuncionario"));
+        venda.setNomeProduto(resultado.getString("NomeProduto"));
         venda.setValorVenda(resultado.getDouble("valorVenda"));
 
       }
