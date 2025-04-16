@@ -47,6 +47,7 @@ public class FrConsultarFuncionarios extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consulta de Funcionário");
 
         Buscar.setBackground(new java.awt.Color(204, 204, 204));
         Buscar.addMouseListener(new java.awt.event.MouseAdapter() {

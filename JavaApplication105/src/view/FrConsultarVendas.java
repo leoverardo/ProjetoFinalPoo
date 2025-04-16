@@ -5,22 +5,21 @@
  */
 package view;
 
-import Controller.ProdutoController;
-import Model.Produtos;
+import Controller.VendasController;
+import Model.Vendas;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author aluno.saolucas
  */
-public class FrConsultarProduto extends javax.swing.JDialog {
+public class FrConsultarVendas extends javax.swing.JDialog {
 
     /**
-     * Creates new form FrConsultarProduto
+     * Creates new form FrConsultarVendas
      */
-    public FrConsultarProduto(java.awt.Frame parent, boolean modal) {
+    public FrConsultarVendas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
@@ -39,7 +38,7 @@ public class FrConsultarProduto extends javax.swing.JDialog {
         Buscar4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tblProdutos = new javax.swing.JTable();
+        tblVendas = new javax.swing.JTable();
         btnExcluir4 = new javax.swing.JToggleButton();
         btnListar = new javax.swing.JToggleButton();
         btnAlterar = new javax.swing.JToggleButton();
@@ -47,7 +46,6 @@ public class FrConsultarProduto extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Consulta de Produtos");
 
         Buscar4.setBackground(new java.awt.Color(204, 204, 204));
         Buscar4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -58,9 +56,9 @@ public class FrConsultarProduto extends javax.swing.JDialog {
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Produtos");
+        jLabel5.setText("Vendas");
 
-        tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
+        tblVendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -68,11 +66,11 @@ public class FrConsultarProduto extends javax.swing.JDialog {
                 {null, null, null, null, null}
             },
             new String [] {
-                "idProduto", "Nome ", "Preço", "idCategoria", "Validade"
+                "idVenda", "Nome do Cliente", "Nome do Funcionario", "Nome do Produto", "Valor da Venda"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -86,7 +84,7 @@ public class FrConsultarProduto extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane5.setViewportView(tblProdutos);
+        jScrollPane5.setViewportView(tblVendas);
 
         btnExcluir4.setBackground(new java.awt.Color(255, 0, 51));
         btnExcluir4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -148,7 +146,7 @@ public class FrConsultarProduto extends javax.swing.JDialog {
             }
         });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cesta-de-compras.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/consultarvendas.png"))); // NOI18N
 
         javax.swing.GroupLayout Buscar4Layout = new javax.swing.GroupLayout(Buscar4);
         Buscar4.setLayout(Buscar4Layout);
@@ -157,39 +155,40 @@ public class FrConsultarProduto extends javax.swing.JDialog {
             .addGroup(Buscar4Layout.createSequentialGroup()
                 .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Buscar4Layout.createSequentialGroup()
-                        .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Buscar4Layout.createSequentialGroup()
-                                .addGap(107, 107, 107)
-                                .addComponent(btnExcluir4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Buscar4Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
-                        .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE))
                     .addGroup(Buscar4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Buscar4Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(7, 7, 7)
-                                .addComponent(jLabel6)
-                                .addGap(146, 146, 146)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(228, 228, 228)
+                        .addComponent(jLabel5)
+                        .addGap(7, 7, 7)
+                        .addComponent(jLabel6)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Buscar4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Buscar4Layout.createSequentialGroup()
+                        .addComponent(btnExcluir4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Buscar4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(200, 200, 200))
         );
         Buscar4Layout.setVerticalGroup(
             Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Buscar4Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(8, 8, 8)
                 .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Buscar4Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel5))
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -215,44 +214,28 @@ public class FrConsultarProduto extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public void pesquisar(){
-        DefaultTableModel modelotabela = (DefaultTableModel) tblProdutos.getModel();
+public void pesquisar(){
+        DefaultTableModel modelotabela = (DefaultTableModel) tblVendas.getModel();
         
         modelotabela.setNumRows(0);
         
-        ProdutoController controller = new ProdutoController();
+        VendasController controller = new VendasController();
         
-        List<Produtos> listaProdutos = controller.consultarProdutos();
+        List<Vendas> listaVendas = controller.listarVendas();
         
-        for(Produtos pro: listaProdutos){
+        for(Vendas vend: listaVendas){
             Object[] linha = {
-                pro.getIdProduto(),
-                pro.getNome(),
-                pro.getPreco(),
-                pro.getIdCategoria(),
-                pro.getValidade()
+                vend.getIdVenda(),
+                vend.getIdProduto(),
+                vend.getIdCliente(),
+                vend.getIdFuncionario(),
+                vend.getValorVenda()
             };
         modelotabela.addRow(linha);
         }
     }
     private void btnExcluir4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluir4MouseClicked
-        if(tblProdutos.getSelectedRow() != -1){
-
-            int linhaSelecionada = tblProdutos.getSelectedRow();
-            String textoCelula = tblProdutos.getValueAt(linhaSelecionada, 0).toString();
-
-            int idProdutos = Integer.parseInt(textoCelula);
-
-            ProdutoController controller = new ProdutoController();
-            if(controller.deletarProduto(idProdutos)){
-                pesquisar();
-                JOptionPane.showMessageDialog(rootPane, "O produto foi removido");
-            }else{
-                JOptionPane.showMessageDialog(rootPane, "O produto não foi removido");
-            }
-
-        }     
+        
     }//GEN-LAST:event_btnExcluir4MouseClicked
 
     private void btnExcluir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir4ActionPerformed
@@ -268,18 +251,7 @@ public class FrConsultarProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
-        if(tblProdutos.getSelectedRow() != -1){
-            int linhaSelecionada = tblProdutos.getSelectedRow();
-            String textoCelula = tblProdutos.getValueAt(linhaSelecionada, 0).toString();
-
-            int idProduto = Integer.parseInt(textoCelula);
-
-            FrAlterarProduto telaAltProd = new FrAlterarProduto(null, rootPaneCheckingEnabled, idProduto);
-
-            telaAltProd.setVisible(true);
-            this.setLocationRelativeTo(null);
-            pesquisar();
-        }
+     
     }//GEN-LAST:event_btnAlterarMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -315,20 +287,20 @@ public class FrConsultarProduto extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrConsultarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrConsultarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrConsultarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrConsultarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrConsultarProduto dialog = new FrConsultarProduto(new javax.swing.JFrame(), true);
+                FrConsultarVendas dialog = new FrConsultarVendas(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -349,6 +321,6 @@ public class FrConsultarProduto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable tblProdutos;
+    private javax.swing.JTable tblVendas;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.Clientes;
 import Model.Produtos;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -78,7 +77,7 @@ public class ProdutoController {
     
     public Produtos buscarPorId(int idProduto) {
     String sql = "SELECT * FROM produtos "
-            + " WHERE PKUSUARIO = ? ";
+            + " WHERE idProduto = ? ";
 
     GerenciadorConexao gerenciador = new GerenciadorConexao();
     PreparedStatement comando = null;

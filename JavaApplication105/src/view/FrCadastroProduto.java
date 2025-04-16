@@ -52,6 +52,7 @@ public class FrCadastroProduto extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Produto");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 

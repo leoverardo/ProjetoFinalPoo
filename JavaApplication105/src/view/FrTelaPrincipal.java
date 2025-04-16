@@ -47,6 +47,7 @@ public class FrTelaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Neuro\n\nMarket");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tela de Início");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);

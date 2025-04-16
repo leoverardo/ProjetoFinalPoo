@@ -37,7 +37,7 @@ public class VendasController {
     return false;      
   }
     
-    public List<Vendas> listarFuncionario() {
+    public List<Vendas> listarVendas() {
     String sql = "SELECT vendas.idVenda, clientes.nome, funcionarios.nome, produtos.nome, vendas.valorVenda "
             + "from vendas join clientes on vendas.idCliente = clientes.idCliente join "
             + "funcionarios on vendas.idFuncionario = funcionarios.idFuncionario join "

@@ -5,11 +5,8 @@
  */
 package view;
 
-import Controller.ClienteController;
 import Controller.ProdutoController;
-import Model.Clientes;
 import Model.Produtos;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,9 +26,24 @@ public class FrAlterarProduto extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
+       
         this.idProduto = idProduto;
+         carregarProduto();
     }
+ public void carregarProduto() {
+  
+    ProdutoController controller = new ProdutoController();
+    Produtos produto  = controller.buscarPorId(idProduto);
 
+    String codigo = String.valueOf(produto.getIdProduto());
+    edtCodigo.setText(codigo);
+    edtNome.setText(produto.getNome());
+    edtIdCategoria.setText(String.valueOf(produto.getIdCategoria()));
+    edtValidade.setText(produto.getValidade());
+    String preco = String.valueOf(produto.getPreco()); 
+    edtPreco.setText(preco);
+
+  }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,15 +70,18 @@ public class FrAlterarProduto extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         edtIdCategoria = new javax.swing.JTextPane();
+        jLabel7 = new javax.swing.JLabel();
+        edtCodigo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Alterar Produto");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Cadastro Produto");
+        jLabel1.setText("Alterar Produto");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/caracteristicas.png"))); // NOI18N
@@ -134,6 +149,16 @@ public class FrAlterarProduto extends javax.swing.JDialog {
         jScrollPane2.setViewportView(edtIdCategoria);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 446, 43));
+
+        jLabel7.setText("Código");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, -1, -1));
+
+        edtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtCodigoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 50, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,6 +231,10 @@ public boolean verificarCampos() {
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
+    private void edtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtCodigoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -251,6 +280,7 @@ public boolean verificarCampos() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JTextField edtCodigo;
     private javax.swing.JTextPane edtIdCategoria;
     private javax.swing.JTextPane edtNome;
     private javax.swing.JTextPane edtPreco;
@@ -261,6 +291,7 @@ public boolean verificarCampos() {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

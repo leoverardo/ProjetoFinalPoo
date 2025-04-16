@@ -47,6 +47,7 @@ public class FrConsultarCliente extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consulta de Cliente");
 
         Buscar.setBackground(new java.awt.Color(204, 204, 204));
         Buscar.addMouseListener(new java.awt.event.MouseAdapter() {

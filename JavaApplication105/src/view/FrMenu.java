@@ -43,6 +43,7 @@ public class FrMenu extends javax.swing.JFrame {
         miListarFun = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoMercado (1).jpg"))); // NOI18N
 

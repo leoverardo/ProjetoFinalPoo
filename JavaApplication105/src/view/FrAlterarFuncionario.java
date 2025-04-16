@@ -86,6 +86,7 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Alterar Funcionário");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(edtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 108, 30));
         getContentPane().add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 487, 43));
