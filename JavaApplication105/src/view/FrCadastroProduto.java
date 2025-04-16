@@ -62,10 +62,16 @@ public class FrCadastroProduto extends javax.swing.JDialog {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/caracteristicas.png"))); // NOI18N
 
+<<<<<<< HEAD
+        btnSalvar.setBackground(new java.awt.Color(0, 0, 255));
+        btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalvar.setText("Salvar");
+=======
         btnSalvar.setBackground(new java.awt.Color(51, 153, 255));
         btnSalvar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar.setText("Cadastrar");
+>>>>>>> c3cb79f3562467ff4f4cc7e7be7adeead892e666
         btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSalvarMouseClicked(evt);
@@ -77,9 +83,14 @@ public class FrCadastroProduto extends javax.swing.JDialog {
             }
         });
 
+<<<<<<< HEAD
+        btnVoltar.setBackground(new java.awt.Color(255, 0, 0));
+        btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
+=======
         btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
         btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
+>>>>>>> c3cb79f3562467ff4f4cc7e7be7adeead892e666
         btnVoltar.setText("Voltar");
         btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
