@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -20,9 +20,7 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
     
     private int idFuncionario;
     
-    public void setIdFuncionario(int idFuncionario){
-        this.idFuncionario = idFuncionario;
-    }
+    
     /**
      * Creates new form AlterarFuncionario
      */
@@ -30,10 +28,11 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        this.setLocationRelativeTo(null);
         
-        setIdFuncionario(idFuncionario);
+        this.idFuncionario = idFuncionario;
         carregarFuncionario();
+        this.setLocationRelativeTo(null);
+
     }
 
     
@@ -41,7 +40,7 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
     public void carregarFuncionario() {
   
     FuncionarioController controller = new FuncionarioController();
-    Funcionario funcionario  = controller.buscarPorId(idFuncionario);
+    Funcionario funcionario = controller.buscarPorIdFuncionario(idFuncionario);
 
     String codigo = String.valueOf(funcionario.getIdFuncionario());
     edtCodigo.setText(codigo);
@@ -62,6 +61,7 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
         edtCargo = new javax.swing.JTextField();
         edtNome = new javax.swing.JTextField();
         edtEmail = new javax.swing.JTextField();
@@ -83,10 +83,12 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         lblCargo = new javax.swing.JLabel();
 
+        jMenu1.setText("jMenu1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(edtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 108, 30));
-        getContentPane().add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 192, 487, 43));
+        getContentPane().add(edtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 108, 30));
+        getContentPane().add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 487, 43));
 
         edtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +103,7 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
 
         lblNome.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblNome.setText("Novo Nome:");
-        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 167, -1, -1));
+        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         lblSenha.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblSenha.setText("Nova Senha:");
@@ -179,7 +181,7 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
                 edtCodigoActionPerformed(evt);
             }
         });
-        jPanel1.add(edtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 60, 20));
+        jPanel1.add(edtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 60, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Código:");
@@ -189,7 +191,7 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
 
         lblCargo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblCargo.setText("Cargo:");
-        getContentPane().add(lblCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
+        getContentPane().add(lblCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -373,6 +375,7 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblCargo;

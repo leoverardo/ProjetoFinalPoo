@@ -4,8 +4,35 @@ package Model;
 public class Vendas {
     private int idVenda;
     private int idProduto;
+    private String nomeProduto;
     private int idCliente;
+    private String nomeCliente;
     private int idFuncionario;
+   private String nomeFuncionario;
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
+    public String getNomeFuncionario() {
+        return nomeFuncionario;
+    }
+
+    public void setNomeFuncionario(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+    }
     private double valorVenda;
 
     public int getIdVenda() {
