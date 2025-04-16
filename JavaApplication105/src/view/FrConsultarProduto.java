@@ -6,7 +6,8 @@
 package view;
 
 import Controller.ClienteController;
-import Model.Clientes;
+import Controller.ProdutoController;
+import Model.Produtos;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -15,12 +16,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author aluno.saolucas
  */
-public class FrConsultarCliente extends javax.swing.JDialog {
+public class FrConsultarProduto extends javax.swing.JDialog {
 
     /**
-     * Creates new form FrConsultarCliente
+     * Creates new form FrConsultarProduto
      */
-    public FrConsultarCliente(java.awt.Frame parent, boolean modal) {
+    public FrConsultarProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
@@ -36,29 +37,30 @@ public class FrConsultarCliente extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Buscar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblClientes = new javax.swing.JTable();
-        btnExcluir2 = new javax.swing.JToggleButton();
+        Buscar4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblProdutos = new javax.swing.JTable();
+        btnExcluir4 = new javax.swing.JToggleButton();
         btnListar = new javax.swing.JToggleButton();
         btnAlterar = new javax.swing.JToggleButton();
         btnVoltar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        Buscar.setBackground(new java.awt.Color(204, 204, 204));
-        Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+        Buscar4.setBackground(new java.awt.Color(204, 204, 204));
+        Buscar4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BuscarMouseClicked(evt);
+                Buscar4MouseClicked(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText("Clientes");
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Produtos");
 
-        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -66,11 +68,11 @@ public class FrConsultarCliente extends javax.swing.JDialog {
                 {null, null, null, null, null}
             },
             new String [] {
-                "idCliente", "Nome", "Email", "Senha", "CPF"
+                "idProduto", "Nome ", "Preço", "idCategoria", "Validade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -84,24 +86,26 @@ public class FrConsultarCliente extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblClientes);
+        jScrollPane5.setViewportView(tblProdutos);
 
-        btnExcluir2.setBackground(new java.awt.Color(255, 0, 51));
-        btnExcluir2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnExcluir2.setText("Excluir");
-        btnExcluir2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnExcluir4.setBackground(new java.awt.Color(255, 0, 51));
+        btnExcluir4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnExcluir4.setForeground(new java.awt.Color(0, 0, 0));
+        btnExcluir4.setText("Excluir");
+        btnExcluir4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnExcluir2MouseClicked(evt);
+                btnExcluir4MouseClicked(evt);
             }
         });
-        btnExcluir2.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluir2ActionPerformed(evt);
+                btnExcluir4ActionPerformed(evt);
             }
         });
 
         btnListar.setBackground(new java.awt.Color(0, 153, 255));
         btnListar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnListar.setForeground(new java.awt.Color(0, 0, 0));
         btnListar.setText("Listar");
         btnListar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -116,6 +120,7 @@ public class FrConsultarCliente extends javax.swing.JDialog {
 
         btnAlterar.setBackground(new java.awt.Color(0, 153, 255));
         btnAlterar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
         btnAlterar.setText("Alterar");
         btnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -130,6 +135,7 @@ public class FrConsultarCliente extends javax.swing.JDialog {
 
         btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
         btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
         btnVoltar.setText("Voltar");
         btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -142,56 +148,56 @@ public class FrConsultarCliente extends javax.swing.JDialog {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginCliente2.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cesta-de-compras.png"))); // NOI18N
 
-        javax.swing.GroupLayout BuscarLayout = new javax.swing.GroupLayout(Buscar);
-        Buscar.setLayout(BuscarLayout);
-        BuscarLayout.setHorizontalGroup(
-            BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BuscarLayout.createSequentialGroup()
-                .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BuscarLayout.createSequentialGroup()
-                        .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(BuscarLayout.createSequentialGroup()
+        javax.swing.GroupLayout Buscar4Layout = new javax.swing.GroupLayout(Buscar4);
+        Buscar4.setLayout(Buscar4Layout);
+        Buscar4Layout.setHorizontalGroup(
+            Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Buscar4Layout.createSequentialGroup()
+                .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Buscar4Layout.createSequentialGroup()
+                        .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Buscar4Layout.createSequentialGroup()
                                 .addGap(107, 107, 107)
-                                .addComponent(btnExcluir2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnExcluir4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BuscarLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Buscar4Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)))
-                        .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(BuscarLayout.createSequentialGroup()
+                    .addGroup(Buscar4Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(BuscarLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                        .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(Buscar4Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
                                 .addGap(7, 7, 7)
-                                .addComponent(jLabel3)
+                                .addComponent(jLabel6)
                                 .addGap(146, 146, 146)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        BuscarLayout.setVerticalGroup(
-            BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BuscarLayout.createSequentialGroup()
+        Buscar4Layout.setVerticalGroup(
+            Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Buscar4Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BuscarLayout.createSequentialGroup()
+                .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Buscar4Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel1))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel5))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnListar)
                     .addComponent(btnAlterar))
                 .addGap(11, 11, 11)
-                .addGroup(BuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnExcluir2)
+                .addGroup(Buscar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnExcluir4)
                     .addComponent(btnVoltar))
                 .addContainerGap())
         );
@@ -200,56 +206,58 @@ public class FrConsultarCliente extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Buscar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Buscar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
     public void pesquisar(){
-        DefaultTableModel modelotabela = (DefaultTableModel) tblClientes.getModel();
+        DefaultTableModel modelotabela = (DefaultTableModel) tblProdutos.getModel();
         
         modelotabela.setNumRows(0);
         
-        ClienteController controller = new ClienteController();
+        ProdutoController controller = new ProdutoController();
         
-        List<Clientes> listaUsuario = controller.listarCliente();
+        List<Produtos> listaProdutos = controller.consultarProdutos();
         
-        for(Clientes cli: listaUsuario){
+        for(Produtos pro: listaProdutos){
             Object[] linha = {
-                cli.getIdCliente(),
-                cli.getNome(),
-                cli.getEmail(),
-                cli.getCpf()
+                pro.getIdProduto(),
+                pro.getNome(),
+                pro.getPreco(),
+                pro.getIdCategoria(),
+                pro.getValidade()
             };
         modelotabela.addRow(linha);
         }
     }
-    private void btnExcluir2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluir2MouseClicked
-        if(tblClientes.getSelectedRow() != -1){
+    private void btnExcluir4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluir4MouseClicked
+        if(tblProdutos.getSelectedRow() != -1){
 
-            int linhaSelecionada = tblClientes.getSelectedRow();
-            String textoCelula = tblClientes.getValueAt(linhaSelecionada, 0).toString();
+            int linhaSelecionada = tblProdutos.getSelectedRow();
+            String textoCelula = tblProdutos.getValueAt(linhaSelecionada, 0).toString();
 
-            int idCliente = Integer.parseInt(textoCelula);
+            int idProdutos = Integer.parseInt(textoCelula);
 
-            ClienteController controller = new ClienteController();
-            if(controller.deletarCliente(idCliente)){
+            ProdutoController controller = new ProdutoController();
+            if(controller.deletarProduto(idProdutos)){
                 pesquisar();
-                JOptionPane.showMessageDialog(rootPane, "O usuário foi deletado");
+                JOptionPane.showMessageDialog(rootPane, "O produto foi removido");
             }else{
-                JOptionPane.showMessageDialog(rootPane, "O usuário não foi deletado");
+                JOptionPane.showMessageDialog(rootPane, "O produto não foi removido");
             }
 
-        }
-    }//GEN-LAST:event_btnExcluir2MouseClicked
+        }     
+    }//GEN-LAST:event_btnExcluir4MouseClicked
 
-    private void btnExcluir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir2ActionPerformed
+    private void btnExcluir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluir2ActionPerformed
+    }//GEN-LAST:event_btnExcluir4ActionPerformed
 
     private void btnListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarMouseClicked
         pesquisar();
@@ -260,15 +268,15 @@ public class FrConsultarCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
-        if(tblClientes.getSelectedRow() != -1){
-            int linhaSelecionada = tblClientes.getSelectedRow();
-            String textoCelula = tblClientes.getValueAt(linhaSelecionada, 0).toString();
+        if(tblProdutos.getSelectedRow() != -1){
+            int linhaSelecionada = tblProdutos.getSelectedRow();
+            String textoCelula = tblProdutos.getValueAt(linhaSelecionada, 0).toString();
 
-            int idCliente = Integer.parseInt(textoCelula);
+            int idProduto = Integer.parseInt(textoCelula);
 
-            FrAterarCliente telaAltCli = new FrAterarCliente(null, rootPaneCheckingEnabled, idCliente);
+            FrAlterarProduto telaAltProd = new FrAlterarProduto(null, rootPaneCheckingEnabled, idProduto);
 
-            telaAltCli.setVisible(true);
+            telaAltProd.setVisible(true);
             this.setLocationRelativeTo(null);
             pesquisar();
         }
@@ -286,9 +294,9 @@ public class FrConsultarCliente extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void BuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarMouseClicked
+    private void Buscar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar4MouseClicked
 
-    }//GEN-LAST:event_BuscarMouseClicked
+    }//GEN-LAST:event_Buscar4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -307,20 +315,20 @@ public class FrConsultarCliente extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrConsultarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrConsultarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrConsultarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrConsultarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConsultarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrConsultarCliente dialog = new FrConsultarCliente(new javax.swing.JFrame(), true);
+                FrConsultarProduto dialog = new FrConsultarProduto(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -334,13 +342,33 @@ public class FrConsultarCliente extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Buscar;
+    private javax.swing.JPanel Buscar1;
+    private javax.swing.JPanel Buscar2;
+    private javax.swing.JPanel Buscar3;
+    private javax.swing.JPanel Buscar4;
     private javax.swing.JToggleButton btnAlterar;
+    private javax.swing.JToggleButton btnExcluir;
+    private javax.swing.JToggleButton btnExcluir1;
     private javax.swing.JToggleButton btnExcluir2;
+    private javax.swing.JToggleButton btnExcluir3;
+    private javax.swing.JToggleButton btnExcluir4;
     private javax.swing.JToggleButton btnListar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblClientes;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JTable tblProdutos;
     // End of variables declaration//GEN-END:variables
 }

@@ -146,9 +146,8 @@ public class FuncionarioController {
     return listaFuncionarios;
   }
     
-    public Funcionario buscarPorId(int idFuncionario) {
-    String sql = "SELECT * FROM funcionarios "
-            + " WHERE idFuncionario = ? ";
+    public Funcionario buscarPorIdFuncionario(int idFuncionario) {
+    String sql = "SELECT * FROM funcionarios WHERE idFuncionario = ?";
 
     GerenciadorConexao gerenciador = new GerenciadorConexao();
     PreparedStatement comando = null;
@@ -169,7 +168,7 @@ public class FuncionarioController {
         funcionario.setNome(resultado.getString("nome"));
         funcionario.setEmail(resultado.getString("email"));
         funcionario.setCpf(resultado.getString("cpf"));
-        funcionario.setCpf(resultado.getString("cargo"));
+        funcionario.setCargo(resultado.getString("cargo"));
       }
 
     } catch (SQLException ex) {

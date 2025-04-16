@@ -175,26 +175,26 @@ public class FrLoginCliente extends javax.swing.JFrame {
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
        FrMenu telaMenu = new FrMenu();
            realizarLogin();
+           if(realizarLogin()){
        telaMenu.setVisible(true);
+           }else{
        this.dispose();
-        
+           }
     }//GEN-LAST:event_btnEntrarMouseClicked
 
     
-     private void realizarLogin() {
+     private boolean realizarLogin() {
     String email = edtEmail.getText();
     String senha = new String(edtSenha.getPassword());
     
     if (email.equals("")) {
       JOptionPane.showMessageDialog(null,
               "Campo 'Email' em branco!");
-      return;
     }
 
     if (senha.equals("")) {
       JOptionPane.showMessageDialog(null,
               "Campo 'Senha' em branco!");
-      return;
     }
     
     senha = Utils.calcularHash(senha);
@@ -205,9 +205,12 @@ public class FrLoginCliente extends javax.swing.JFrame {
 
     if (autenticado) {
       JOptionPane.showMessageDialog(null, "Usuario logado ");
+      return true;
     } else {
       JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos");
+      
     }
+    return false;
   }
     /**
      * @param args the command line arguments

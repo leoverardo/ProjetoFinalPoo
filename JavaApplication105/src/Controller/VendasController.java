@@ -2,14 +2,19 @@ package Controller;
 
 import Model.Vendas;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
 public class VendasController {
     public boolean inserirVenda(Vendas venda){
-    String sql = "INSERT INTO vendas (idProduto, idCliente, idFuncionario, valorVenda) "
-               + " VALUES (?,?,?,?)";
+    String sql = "INSERT INTO vendas (idVenda, idProduto, idCliente, idFuncionario, valorVenda) "
+               + " VALUES (?,?,?,?,?)";
     
     GerenciadorConexao gerenciador = new GerenciadorConexao();
     PreparedStatement comando = null;
@@ -31,5 +36,101 @@ public class VendasController {
     }
     return false;      
   }
+    
+    public List<Vendas> listarFuncionario() {
+    String sql = "SELECT * FROM vendas";
+    
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+    ResultSet resultado = null;
+    
+    List<Vendas> listaVendas = new ArrayList<>();
+    
+    try {
+      comando = gerenciador.prepararComando(sql);
+
+      resultado = comando.executeQuery();
+
+      
+      while (resultado.next()) {
+
+        Vendas venda = new Vendas();
+
+        venda.setIdFuncionario(resultado.getInt("idVenda"));
+        venda.setIdProduto(resultado.getInt("idProduto"));
+        venda.setIdCliente(resultado.getInt("idCliente"));
+        venda.setIdFuncionario(resultado.getInt("idFuncionario"));
+        venda.setValorVenda(resultado.getDouble("valorVenda"));
+
+        listaVendas.add(venda);
+      }
+
+    } catch (SQLException ex) {
+      Logger.getLogger(ProdutoController.class.getName()).log(
+              Level.SEVERE, null, ex);
+    } finally {
+      gerenciador.fecharConexao(comando, resultado);
+    }
+
+    return listaVendas;
+  }
   
+    public Vendas buscarPorIdVenda(int idVenda) {
+    String sql = "SELECT * FROM vendas WHERE idVenda = ?";
+
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+    ResultSet resultado = null;
+
+    Vendas venda = new Vendas();
+
+    try {
+      comando = gerenciador.prepararComando(sql);
+
+      comando.setInt(1, idVenda);
+
+      resultado = comando.executeQuery();
+
+      if (resultado.next()) {
+
+        venda.setIdFuncionario(resultado.getInt("idVenda"));
+        venda.setIdProduto(resultado.getInt("idProduto"));
+        venda.setIdCliente(resultado.getInt("idCliente"));
+        venda.setIdFuncionario(resultado.getInt("idFuncionario"));
+        venda.setValorVenda(resultado.getDouble("valorVenda"));
+
+      }
+
+    } catch (SQLException ex) {
+      Logger.getLogger(ProdutoController.class.getName()).log(
+              Level.SEVERE, null, ex);
+    } finally {
+      gerenciador.fecharConexao(comando, resultado);
+    }
+    return venda;
+  }
+    
+    
+    public boolean deletarVenda(int idVenda) {
+    String sql = "DELETE FROM vendas "
+               + "WHERE idVenda = ?";
+
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+
+    try {
+      comando = gerenciador.prepararComando(sql);
+      comando.setInt(1, idVenda);
+
+      comando.executeUpdate();
+
+      return true;
+    } catch (SQLException ex) {
+      JOptionPane.showMessageDialog(null, "Erro ao excluir: "
+              + ex);
+    } finally {
+      gerenciador.fecharConexao(comando);
+    }
+    return false;
+  }
 }

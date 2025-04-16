@@ -5,6 +5,10 @@
  */
 package view;
 
+import Controller.ProdutoController;
+import Model.Produtos;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aluno.saolucas
@@ -17,6 +21,7 @@ public class FrCadastroProduto extends javax.swing.JDialog {
     public FrCadastroProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -35,15 +40,15 @@ public class FrCadastroProduto extends javax.swing.JDialog {
         btnVoltar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtNomeProduto = new javax.swing.JTextPane();
+        edtNome = new javax.swing.JTextPane();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtCategoria = new javax.swing.JTextPane();
+        edtIdCategoria = new javax.swing.JTextPane();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        txtValidade = new javax.swing.JTextPane();
+        edtValidade = new javax.swing.JTextPane();
         jScrollPane4 = new javax.swing.JScrollPane();
-        txtPreco = new javax.swing.JTextPane();
+        edtPreco = new javax.swing.JTextPane();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -56,9 +61,16 @@ public class FrCadastroProduto extends javax.swing.JDialog {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/caracteristicas.png"))); // NOI18N
 
+<<<<<<< HEAD
         btnSalvar.setBackground(new java.awt.Color(0, 0, 255));
         btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
         btnSalvar.setText("Salvar");
+=======
+        btnSalvar.setBackground(new java.awt.Color(51, 153, 255));
+        btnSalvar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvar.setText("Cadastrar");
+>>>>>>> c3cb79f3562467ff4f4cc7e7be7adeead892e666
         btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSalvarMouseClicked(evt);
@@ -70,9 +82,20 @@ public class FrCadastroProduto extends javax.swing.JDialog {
             }
         });
 
+<<<<<<< HEAD
         btnVoltar.setBackground(new java.awt.Color(255, 0, 0));
         btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
+=======
+        btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
+        btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
+>>>>>>> c3cb79f3562467ff4f4cc7e7be7adeead892e666
         btnVoltar.setText("Voltar");
+        btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVoltarMouseClicked(evt);
+            }
+        });
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -83,21 +106,21 @@ public class FrCadastroProduto extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nome Produto");
 
-        jScrollPane1.setViewportView(txtNomeProduto);
+        jScrollPane1.setViewportView(edtNome);
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Categoria");
 
-        jScrollPane2.setViewportView(txtCategoria);
+        jScrollPane2.setViewportView(edtIdCategoria);
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Validade");
 
-        jScrollPane3.setViewportView(txtValidade);
+        jScrollPane3.setViewportView(edtValidade);
 
-        jScrollPane4.setViewportView(txtPreco);
+        jScrollPane4.setViewportView(edtPreco);
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -108,29 +131,31 @@ public class FrCadastroProduto extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel1)
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane2)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jLabel6)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(90, 90, 90)
+                            .addComponent(jLabel1)
+                            .addGap(17, 17, 17)
+                            .addComponent(jLabel2))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(39, 39, 39)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                                .addComponent(jScrollPane3)
+                                .addComponent(jScrollPane4)))))
+                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,24 +169,24 @@ public class FrCadastroProduto extends javax.swing.JDialog {
                 .addGap(33, 33, 33)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalvar)
-                .addContainerGap())
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -187,32 +212,65 @@ public class FrCadastroProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                String nome = txtNomeProduto.getText();
-                String categoria = txtCategoria.getText();
-                String validade = txtValidade.getText();
-                String precoStr = txtPreco.getText();
+        if (verificarCampos()) {
 
-                try {
-                    double preco = Double.parseDouble(precoStr);
-                    System.out.println("Produto cadastrado:");
-                    System.out.println("Nome: " + nome);
-                    System.out.println("Categoria: " + categoria);
-                    System.out.println("Validade: " + validade);
-                    System.out.println("Preço: R$" + preco);
-                } catch (NumberFormatException e) {
-                    javax.swing.JOptionPane.showMessageDialog(null, "Preço inválido!");
-                }
-            }
-        });
-        // TODO add your handling code here:
+            gravar();
+        }
     }//GEN-LAST:event_btnSalvarMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnVoltarMouseClicked
+
+    public void gravar() {
+
+        Produtos produtos = new Produtos();
+
+        produtos.setNome(edtNome.getText());
+        produtos.setIdCategoria(Integer.parseInt(edtIdCategoria.getText()));
+        produtos.setPreco(Double.parseDouble(edtPreco.getText()));
+        produtos.setValidade(edtValidade.getText());
+
+        ProdutoController controller = new ProdutoController();
+
+        if (controller.inserirProduto(produtos)) {
+            JOptionPane.showMessageDialog(null,
+                    "Produto inserido com sucesso");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "O produto não foi inserido");
+        }
+    }
+
+    public boolean verificarCampos() {
+
+        if (!edtNome.getText().matches("^[\\p{L} ]+$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Nome' possui formato inválido");
+            return false;
+        }
+
+        if (!edtIdCategoria.getText().matches("[0-9]+$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Categoria' possui formato inválido");
+            return false;
+        }
+
+        if (!edtPreco.getText().matches("[0-9]+[.]?[0-9]+$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Preço' possui formato inválido");
+            return false;
+        }
+        if (edtValidade.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Válidade' está em branco");
+            return false;
+        }
+
+        return true;
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -255,6 +313,10 @@ public class FrCadastroProduto extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JTextPane edtIdCategoria;
+    private javax.swing.JTextPane edtNome;
+    private javax.swing.JTextPane edtPreco;
+    private javax.swing.JTextPane edtValidade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -266,9 +328,5 @@ public class FrCadastroProduto extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextPane txtCategoria;
-    private javax.swing.JTextPane txtNomeProduto;
-    private javax.swing.JTextPane txtPreco;
-    private javax.swing.JTextPane txtValidade;
     // End of variables declaration//GEN-END:variables
 }

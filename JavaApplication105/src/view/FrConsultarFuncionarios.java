@@ -56,25 +56,24 @@ public class FrConsultarFuncionarios extends javax.swing.JDialog {
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Funcionários");
 
         tblFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "idFucionario", "Nome", "Email", "Senha", "CPF", "Cargo"
+                "idFucionario", "Nome", "Email", "CPF", "Cargo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -89,7 +88,6 @@ public class FrConsultarFuncionarios extends javax.swing.JDialog {
 
         btnExcluir2.setBackground(new java.awt.Color(255, 0, 51));
         btnExcluir2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnExcluir2.setForeground(new java.awt.Color(0, 0, 0));
         btnExcluir2.setText("Excluir");
         btnExcluir2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -104,7 +102,6 @@ public class FrConsultarFuncionarios extends javax.swing.JDialog {
 
         btnListar.setBackground(new java.awt.Color(0, 153, 255));
         btnListar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnListar.setForeground(new java.awt.Color(0, 0, 0));
         btnListar.setText("Listar");
         btnListar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -119,7 +116,6 @@ public class FrConsultarFuncionarios extends javax.swing.JDialog {
 
         btnAlterar.setBackground(new java.awt.Color(0, 153, 255));
         btnAlterar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
         btnAlterar.setText("Alterar");
         btnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -134,7 +130,6 @@ public class FrConsultarFuncionarios extends javax.swing.JDialog {
 
         btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
         btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
         btnVoltar.setText("Voltar");
         btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -273,7 +268,7 @@ public void pesquisar(){
 
             int idFuncionario = Integer.parseInt(textoCelula);
 
-            FrAlterarFuncionario telaAltFun = new FrAlterarFuncionario(null, rootPaneCheckingEnabled, 0);
+            FrAlterarFuncionario telaAltFun = new FrAlterarFuncionario(null, rootPaneCheckingEnabled, idFuncionario);
 
             telaAltFun.setVisible(true);
             this.setLocationRelativeTo(null);
