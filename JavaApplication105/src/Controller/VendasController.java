@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 
 public class VendasController {
     public boolean inserirVenda(Vendas venda){
-    String sql = "INSERT INTO vendas (idVenda, idProduto, idCliente, idFuncionario, valorVenda) "
-               + " VALUES (?,?,?,?,?)";
+    String sql = "INSERT INTO vendas (idProduto, idCliente, idFuncionario, valorVenda) "
+               + " VALUES (?,?,?,?)";
     
     GerenciadorConexao gerenciador = new GerenciadorConexao();
     PreparedStatement comando = null;
@@ -38,7 +38,10 @@ public class VendasController {
   }
     
     public List<Vendas> listarFuncionario() {
-    String sql = "SELECT * FROM vendas";
+    String sql = "SELECT vendas.idVenda, clientes.nome, funcionarios.nome, produtos.nome, vendas.valorVenda "
+            + "from vendas join clientes on vendas.idCliente = clientes.idCliente join "
+            + "funcionarios on vendas.idFuncionario = funcionarios.idFuncionario join "
+            + "produtos on vendas.idProduto = produtos.idProduto";
     
     GerenciadorConexao gerenciador = new GerenciadorConexao();
     PreparedStatement comando = null;
@@ -76,7 +79,11 @@ public class VendasController {
   }
   
     public Vendas buscarPorIdVenda(int idVenda) {
-    String sql = "SELECT * FROM vendas WHERE idVenda = ?";
+    String sql = "SELECT vendas.idVenda, clientes.nome, funcionarios.nome, produtos.nome, vendas.valorVenda "
+            + "from vendas join clientes on vendas.idCliente = clientes.idCliente "
+            + "join funcionarios on vendas.idFuncionario = funcionarios.idFuncionario "
+            + "join produtos on vendas.idProduto = produtos.idProduto"
+            + " where vendas.idVenda = ?";
 
     GerenciadorConexao gerenciador = new GerenciadorConexao();
     PreparedStatement comando = null;
