@@ -57,6 +57,7 @@ public class FrCadastroProduto extends javax.swing.JDialog {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/caracteristicas.png"))); // NOI18N
 
         btnSalvar.setBackground(new java.awt.Color(0, 0, 255));
+        btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
         btnSalvar.setText("Salvar");
         btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -70,6 +71,7 @@ public class FrCadastroProduto extends javax.swing.JDialog {
         });
 
         btnVoltar.setBackground(new java.awt.Color(255, 0, 0));
+        btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
