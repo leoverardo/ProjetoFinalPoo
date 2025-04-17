@@ -244,7 +244,7 @@ public class FrCadastroProduto extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,
                     "O campo 'Categoria' possui formato inválido");
             return false;
-        }
+        }     
 
         if (!edtPreco.getText().matches("[0-9]+[.]?[0-9]+$")) {
             JOptionPane.showMessageDialog(null,
