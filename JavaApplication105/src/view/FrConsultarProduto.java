@@ -57,7 +57,6 @@ public class FrConsultarProduto extends javax.swing.JDialog {
         });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Produtos");
 
         tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
@@ -68,11 +67,11 @@ public class FrConsultarProduto extends javax.swing.JDialog {
                 {null, null, null, null, null}
             },
             new String [] {
-                "idProduto", "Nome ", "Preço", "idCategoria", "Validade"
+                "idProduto", "Nome ", "Preço", "Categoria", "Validade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -230,7 +229,7 @@ public class FrConsultarProduto extends javax.swing.JDialog {
                 pro.getIdProduto(),
                 pro.getNome(),
                 pro.getPreco(),
-                pro.getIdCategoria(),
+                pro.getCategoria(),
                 pro.getValidade()
             };
         modelotabela.addRow(linha);

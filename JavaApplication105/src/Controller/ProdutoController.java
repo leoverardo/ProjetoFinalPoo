@@ -38,7 +38,9 @@ public class ProdutoController {
   }
     
     public List<Produtos> consultarProdutos() {
-    String sql = "SELECT * FROM produtos";
+    String sql = "SELECT produtos.idProduto, produtos.nome, produtos.preco, categoria_produto.nome as Categoria, produtos.validade"
+            + " FROM produtos join categoria_produto "
+            + "on produtos.idCategoria = categoria_produto.idCategoria";
     
     GerenciadorConexao gerenciador = new GerenciadorConexao();
     PreparedStatement comando = null;
@@ -59,7 +61,7 @@ public class ProdutoController {
         produto.setIdProduto(resultado.getInt("idProduto"));
         produto.setNome(resultado.getString("nome"));
         produto.setPreco(resultado.getDouble("preco"));
-        produto.setIdCategoria(resultado.getInt("idCategoria"));
+        produto.setCategoria(resultado.getString("Categoria"));
         produto.setValidade(resultado.getString("validade"));
 
         listaProdutos.add(produto);

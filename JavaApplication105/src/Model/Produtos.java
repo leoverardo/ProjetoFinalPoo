@@ -6,6 +6,15 @@ public class Produtos {
     private String nome;
     private Double preco;
     private int idCategoria;
+    private String Categoria;
+
+    public String getCategoria() {
+        return Categoria;
+    }
+
+    public void setCategoria(String Categoria) {
+        this.Categoria = Categoria;
+    }
     private String validade;
 
     public int getIdProduto() {
