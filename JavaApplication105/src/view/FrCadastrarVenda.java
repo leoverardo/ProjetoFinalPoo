@@ -5,6 +5,13 @@
  */
 package view;
 
+import Controller.ClienteController;
+import Controller.ProdutoController;
+import Model.Clientes;
+import Model.Produtos;
+import java.util.List;
+import javax.swing.JComboBox;
+
 /**
  *
  * @author aluno.saolucas
@@ -34,18 +41,15 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtIdFuncionario = new javax.swing.JTextPane();
         jLabel7 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        txtIdCliente = new javax.swing.JTextPane();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        txtIdProduto = new javax.swing.JTextPane();
         jScrollPane8 = new javax.swing.JScrollPane();
         txtVenda = new javax.swing.JTextPane();
         btnSalvar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        selectCliente = new javax.swing.JComboBox<>();
+        selectProduto = new javax.swing.JComboBox<>();
+        selectFuncionario = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,28 +63,19 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("ID Produto");
+        jLabel4.setText("Produto");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("ID Cliente");
+        jLabel5.setText("Cliente");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("ID Funcionario");
-
-        txtIdFuncionario.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jScrollPane3.setViewportView(txtIdFuncionario);
+        jLabel6.setText("Funcionario");
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Valor Venda");
-
-        txtIdCliente.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jScrollPane6.setViewportView(txtIdCliente);
-
-        txtIdProduto.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jScrollPane7.setViewportView(txtIdProduto);
 
         jScrollPane8.setViewportView(txtVenda);
 
@@ -104,10 +99,32 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lista-de-compras.png"))); // NOI18N
 
+        selectCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectClienteActionPerformed(evt);
+            }
+        });
+
+        selectProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectProdutoActionPerformed(evt);
+            }
+        });
+
+        selectFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                .addGap(55, 55, 55))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -119,7 +136,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
                         .addGap(26, 26, 26)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel4)
@@ -127,42 +144,39 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-                            .addComponent(jScrollPane6)
-                            .addComponent(jScrollPane3)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)))
-                .addGap(37, 37, 37))
+                            .addComponent(selectCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(selectFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(selectProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel1)
-                        .addGap(191, 191, 191)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jLabel2)
                         .addGap(25, 25, 25)
-                        .addComponent(jLabel4)
-                        .addGap(1, 1, 1)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel5)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel1)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(selectProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel5)
+                        .addGap(10, 10, 10)
+                        .addComponent(selectCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(jLabel3)))
                 .addGap(8, 8, 8)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addComponent(selectFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,6 +208,27 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void selectClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectClienteActionPerformed
+        ClienteController clienteController = new ClienteController();
+        List<Clientes> listaClientes = clienteController.listarCliente();
+
+        JComboBox<String> comboClientes = new JComboBox<>();
+        for (Clientes cliente : listaClientes) {
+            comboClientes.addItem(cliente.getNome());
+        }
+    }//GEN-LAST:event_selectClienteActionPerformed
+
+    private void selectProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectProdutoActionPerformed
+    ProdutoController produtoController = new ProdutoController();
+
+    List<Produtos> listaProdutos = produtoController.consultarProdutos();
+
+    JComboBox<String> comboProdutos = new JComboBox<>();
+    for (Produtos produto : listaProdutos) {
+        comboProdutos.addItem(produto.getNome()); 
+    }
+    }//GEN-LAST:event_selectProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,13 +283,10 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTextPane txtIdCliente;
-    private javax.swing.JTextPane txtIdFuncionario;
-    private javax.swing.JTextPane txtIdProduto;
+    private javax.swing.JComboBox<String> selectCliente;
+    private javax.swing.JComboBox<String> selectFuncionario;
+    private javax.swing.JComboBox<String> selectProduto;
     private javax.swing.JTextPane txtVenda;
     // End of variables declaration//GEN-END:variables
 }
