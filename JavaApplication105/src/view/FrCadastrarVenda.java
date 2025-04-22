@@ -6,11 +6,16 @@
 package view;
 
 import Controller.ClienteController;
+import Controller.FuncionarioController;
 import Controller.ProdutoController;
 import Model.Clientes;
+import Model.Funcionario;
 import Model.Produtos;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +29,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     public FrCadastrarVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -34,6 +40,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -46,7 +53,6 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         txtVenda = new javax.swing.JTextPane();
         btnSalvar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         selectCliente = new javax.swing.JComboBox<>();
         selectProduto = new javax.swing.JComboBox<>();
         selectFuncionario = new javax.swing.JComboBox<>();
@@ -56,31 +62,23 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Cadastrar Vendas");
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Produto");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Cliente");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Funcionario");
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Valor Venda");
 
         jScrollPane8.setViewportView(txtVenda);
 
         btnSalvar.setBackground(new java.awt.Color(51, 51, 255));
-        btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +87,6 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         });
 
         btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
-        btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,23 +94,40 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lista-de-compras.png"))); // NOI18N
+        selectCliente.setMaximumRowCount(50);
+        selectCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecione" }));
 
-        selectCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, selectCliente, org.jdesktop.beansbinding.ELProperty.create("${action}"), selectCliente, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
         selectCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectClienteActionPerformed(evt);
             }
         });
 
-        selectProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectProduto.setMaximumRowCount(50);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, selectProduto, org.jdesktop.beansbinding.ELProperty.create("${action}"), selectProduto, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
         selectProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectProdutoActionPerformed(evt);
             }
         });
 
-        selectFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectFuncionario.setMaximumRowCount(50);
+        selectFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecione" }));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, selectFuncionario, org.jdesktop.beansbinding.ELProperty.create("${action}"), selectFuncionario, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        selectFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectFuncionarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -129,9 +143,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(92, 92, 92)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2))
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jLabel3)
@@ -154,9 +166,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel2)
-                        .addGap(25, 25, 25)
+                        .addGap(136, 136, 136)
                         .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
@@ -198,6 +208,8 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        bindingGroup.bind();
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -211,24 +223,38 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
 
     private void selectClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectClienteActionPerformed
         ClienteController clienteController = new ClienteController();
+        
         List<Clientes> listaClientes = clienteController.listarCliente();
 
-        JComboBox<String> comboClientes = new JComboBox<>();
         for (Clientes cliente : listaClientes) {
-            comboClientes.addItem(cliente.getNome());
+            selectCliente.addItem(cliente.getNome());
         }
     }//GEN-LAST:event_selectClienteActionPerformed
 
+
+    
     private void selectProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectProdutoActionPerformed
     ProdutoController produtoController = new ProdutoController();
 
     List<Produtos> listaProdutos = produtoController.consultarProdutos();
+    
 
-    JComboBox<String> comboProdutos = new JComboBox<>();
-    for (Produtos produto : listaProdutos) {
-        comboProdutos.addItem(produto.getNome()); 
+    for(Produtos produto : listaProdutos){
+        selectProduto.addItem(produto);
     }
+   
     }//GEN-LAST:event_selectProdutoActionPerformed
+
+    private void selectFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFuncionarioActionPerformed
+        FuncionarioController funcionarioController = new FuncionarioController();
+
+    List<Funcionario> listaFuncionarios = funcionarioController.listarFuncionario();
+    
+
+    for(Funcionario funcionario : listaFuncionarios){
+        selectFuncionario.addItem(funcionario.getNome());
+    }
+    }//GEN-LAST:event_selectFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,7 +302,6 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -286,7 +311,8 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JComboBox<String> selectCliente;
     private javax.swing.JComboBox<String> selectFuncionario;
-    private javax.swing.JComboBox<String> selectProduto;
+    private javax.swing.JComboBox<Produtos> selectProduto;
     private javax.swing.JTextPane txtVenda;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

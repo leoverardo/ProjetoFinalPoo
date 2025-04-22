@@ -49,5 +49,10 @@ public class Clientes {
     }
         private String cpf;
         
+        
+         @Override
+    public String toString() {
+        return getNome(); 
+    }
     }
     
