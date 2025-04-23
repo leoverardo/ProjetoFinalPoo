@@ -205,9 +205,7 @@
           <Properties>
             <Property name="maximumRowCount" type="int" value="50"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="selecione"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <BindingProperties>
@@ -217,7 +215,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectClienteActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Clientes&gt;"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="selectProduto">
@@ -238,9 +236,7 @@
           <Properties>
             <Property name="maximumRowCount" type="int" value="50"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="selecione"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <BindingProperties>
@@ -250,7 +246,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectFuncionarioActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Funcionario&gt;"/>
           </AuxValues>
         </Component>
       </SubComponents>

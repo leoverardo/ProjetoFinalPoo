@@ -95,7 +95,6 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         });
 
         selectCliente.setMaximumRowCount(50);
-        selectCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecione" }));
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, selectCliente, org.jdesktop.beansbinding.ELProperty.create("${action}"), selectCliente, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
@@ -118,7 +117,6 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         });
 
         selectFuncionario.setMaximumRowCount(50);
-        selectFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecione" }));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, selectFuncionario, org.jdesktop.beansbinding.ELProperty.create("${action}"), selectFuncionario, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
@@ -227,7 +225,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         List<Clientes> listaClientes = clienteController.listarCliente();
 
         for (Clientes cliente : listaClientes) {
-            selectCliente.addItem(cliente.getNome());
+            selectCliente.addItem(cliente);
         }
     }//GEN-LAST:event_selectClienteActionPerformed
 
@@ -246,13 +244,13 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_selectProdutoActionPerformed
 
     private void selectFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFuncionarioActionPerformed
-        FuncionarioController funcionarioController = new FuncionarioController();
+    FuncionarioController funcionarioController = new FuncionarioController();
 
     List<Funcionario> listaFuncionarios = funcionarioController.listarFuncionario();
     
 
     for(Funcionario funcionario : listaFuncionarios){
-        selectFuncionario.addItem(funcionario.getNome());
+        selectFuncionario.addItem(funcionario);
     }
     }//GEN-LAST:event_selectFuncionarioActionPerformed
 
@@ -309,8 +307,8 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JComboBox<String> selectCliente;
-    private javax.swing.JComboBox<String> selectFuncionario;
+    private javax.swing.JComboBox<Clientes> selectCliente;
+    private javax.swing.JComboBox<Funcionario> selectFuncionario;
     private javax.swing.JComboBox<Produtos> selectProduto;
     private javax.swing.JTextPane txtVenda;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
