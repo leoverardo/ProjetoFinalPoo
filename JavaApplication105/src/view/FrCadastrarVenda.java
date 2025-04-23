@@ -6,14 +6,18 @@
 package view;
 
 import Controller.ClienteController;
+import Controller.FuncionarioController;
 import Controller.ProdutoController;
 import Model.Clientes;
 import Model.Funcionario;
 import Model.Produtos;
 import Model.Vendas;
 import java.util.List;
+<<<<<<< HEAD
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+=======
+>>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
 
 /**
  *
@@ -27,7 +31,10 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     public FrCadastrarVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+<<<<<<< HEAD
         
+=======
+>>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
         this.setLocationRelativeTo(null);
     }
 
@@ -39,6 +46,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -61,32 +69,29 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Cadastrar Vendas");
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Produto");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Cliente");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Funcionario");
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Valor Venda");
 
         jScrollPane8.setViewportView(txtVenda);
 
+<<<<<<< HEAD
         btnSalvar.setBackground(new java.awt.Color(51, 153, 255));
         btnSalvar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
+=======
+        btnSalvar.setBackground(new java.awt.Color(51, 51, 255));
+>>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
         btnSalvar.setText("Salvar");
         btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -100,8 +105,11 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         });
 
         btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
+<<<<<<< HEAD
         btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
+=======
+>>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,21 +117,42 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
             }
         });
 
+<<<<<<< HEAD
         selectCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+=======
+        selectCliente.setMaximumRowCount(50);
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, selectCliente, org.jdesktop.beansbinding.ELProperty.create("${action}"), selectCliente, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+>>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
         selectCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectClienteActionPerformed(evt);
             }
         });
 
-        selectProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectProduto.setMaximumRowCount(50);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, selectProduto, org.jdesktop.beansbinding.ELProperty.create("${action}"), selectProduto, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
         selectProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectProdutoActionPerformed(evt);
             }
         });
 
-        selectFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectFuncionario.setMaximumRowCount(50);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, selectFuncionario, org.jdesktop.beansbinding.ELProperty.create("${action}"), selectFuncionario, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        selectFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectFuncionarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,6 +161,12 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+<<<<<<< HEAD
+=======
+                        .addGap(92, 92, 92)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+>>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
                         .addGap(26, 26, 26)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -160,10 +195,20 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel4)
+=======
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel1)))
+>>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -201,6 +246,8 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        bindingGroup.bind();
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -214,25 +261,29 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
 
     private void selectClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectClienteActionPerformed
         ClienteController clienteController = new ClienteController();
+        
         List<Clientes> listaClientes = clienteController.listarCliente();
 
-        JComboBox<String> comboClientes = new JComboBox<>();
         for (Clientes cliente : listaClientes) {
-            comboClientes.addItem(cliente.getNome());
+            selectCliente.addItem(cliente);
         }
     }//GEN-LAST:event_selectClienteActionPerformed
 
+
+    
     private void selectProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectProdutoActionPerformed
     ProdutoController produtoController = new ProdutoController();
 
     List<Produtos> listaProdutos = produtoController.consultarProdutos();
+    
 
-    JComboBox<String> comboProdutos = new JComboBox<>();
-    for (Produtos produto : listaProdutos) {
-        comboProdutos.addItem(produto.getNome()); 
+    for(Produtos produto : listaProdutos){
+        selectProduto.addItem(produto);
     }
+   
     }//GEN-LAST:event_selectProdutoActionPerformed
 
+<<<<<<< HEAD
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
 
             gravar();
@@ -266,6 +317,22 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
 }
     
 
+=======
+    private void selectFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFuncionarioActionPerformed
+    FuncionarioController funcionarioController = new FuncionarioController();
+
+    List<Funcionario> listaFuncionarios = funcionarioController.listarFuncionario();
+    
+
+    for(Funcionario funcionario : listaFuncionarios){
+        selectFuncionario.addItem(funcionario);
+    }
+    }//GEN-LAST:event_selectFuncionarioActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+>>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -316,9 +383,10 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JComboBox<String> selectCliente;
-    private javax.swing.JComboBox<String> selectFuncionario;
-    private javax.swing.JComboBox<String> selectProduto;
+    private javax.swing.JComboBox<Clientes> selectCliente;
+    private javax.swing.JComboBox<Funcionario> selectFuncionario;
+    private javax.swing.JComboBox<Produtos> selectProduto;
     private javax.swing.JTextPane txtVenda;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
