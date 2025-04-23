@@ -5,30 +5,18 @@
  */
 package view;
 
-import Controller.ClienteController;
-import Controller.ProdutoController;
-import Model.Clientes;
-import Model.Funcionario;
-import Model.Produtos;
-import Model.Vendas;
-import java.util.List;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author aluno.saolucas
  */
-public class FrCadastrarVenda extends javax.swing.JDialog {
+public class FrAlterarVenda extends javax.swing.JDialog {
 
     /**
-     * Creates new form FrCadastrarVenda
+     * Creates new form FrAlterarVenda
      */
-    public FrCadastrarVenda(java.awt.Frame parent, boolean modal) {
+    public FrAlterarVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -56,7 +44,6 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         selectFuncionario = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastrar Venda");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -88,11 +75,6 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         btnSalvar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar.setText("Salvar");
-        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSalvarMouseClicked(evt);
-            }
-        });
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -183,7 +165,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -213,59 +195,16 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void selectClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectClienteActionPerformed
-        ClienteController clienteController = new ClienteController();
-        List<Clientes> listaClientes = clienteController.listarCliente();
 
-        JComboBox<String> comboClientes = new JComboBox<>();
-        for (Clientes cliente : listaClientes) {
-            comboClientes.addItem(cliente.getNome());
-        }
     }//GEN-LAST:event_selectClienteActionPerformed
 
     private void selectProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectProdutoActionPerformed
-    ProdutoController produtoController = new ProdutoController();
-
-    List<Produtos> listaProdutos = produtoController.consultarProdutos();
-
-    JComboBox<String> comboProdutos = new JComboBox<>();
-    for (Produtos produto : listaProdutos) {
-        comboProdutos.addItem(produto.getNome()); 
-    }
+   
     }//GEN-LAST:event_selectProdutoActionPerformed
 
-    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
-
-            gravar();
-    }//GEN-LAST:event_btnSalvarMouseClicked
-    public void gravar() {
-
-    Vendas vendas = new Vendas();
-
-    Produtos produtoSelecionado = (Produtos) selectProduto.getSelectedItem();
-    Clientes clienteSelecionado = (Clientes) selectCliente.getSelectedItem();
-    Funcionario funcionarioSelecionado = (Funcionario) selectFuncionario.getSelectedItem();
-
-    vendas.setIdProduto(produtoSelecionado.getIdProduto());
-    vendas.setIdCliente(clienteSelecionado.getIdCliente());
-    vendas.setIdFuncionario(funcionarioSelecionado.getIdFuncionario());
-
-    try {
-        double valorVenda = Double.parseDouble(txtVenda.getText());
-        vendas.setValorVenda(valorVenda);
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(null, "Valor inválido para a venda.", "Erro", JOptionPane.ERROR_MESSAGE);
-    }
-     VendasController vend = new VendasController();
-    boolean sucesso = vend.inserirVenda(vendas);
-    
-    if (sucesso) {
-        JOptionPane.showMessageDialog(null, "Venda registrada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-    } else {
-        JOptionPane.showMessageDialog(null, "Erro ao registrar venda.", "Erro", JOptionPane.ERROR_MESSAGE);
-    }
-}
-    
-
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -280,20 +219,20 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrCadastrarVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrAlterarVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrCadastrarVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrAlterarVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrCadastrarVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrAlterarVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrCadastrarVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrAlterarVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrCadastrarVenda dialog = new FrCadastrarVenda(new javax.swing.JFrame(), true);
+                FrAlterarVenda dialog = new FrAlterarVenda(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

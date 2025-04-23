@@ -74,7 +74,7 @@ public class FrLoginCliente extends javax.swing.JFrame {
 
         btnEntrar.setBackground(new java.awt.Color(51, 153, 255));
         btnEntrar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnEntrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEntrar.setText("Entrar");
         btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -90,7 +90,7 @@ public class FrLoginCliente extends javax.swing.JFrame {
 
         btnCadastrar.setBackground(new java.awt.Color(51, 153, 255));
         btnCadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastrar.setText("Cadastre-se");
         btnCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

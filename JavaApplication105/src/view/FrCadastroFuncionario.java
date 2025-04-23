@@ -110,7 +110,7 @@ public class FrCadastroFuncionario extends javax.swing.JFrame {
 
         btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
         btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
+        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
         btnVoltar.setText("Voltar");
         btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -125,7 +125,7 @@ public class FrCadastroFuncionario extends javax.swing.JFrame {
 
         btnCadastrar.setBackground(new java.awt.Color(51, 153, 255));
         btnCadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -233,7 +233,8 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_miConVendActionPerformed
 
     private void miCadVendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCadVendActionPerformed
-        // TODO add your handling code here:
+        FrCadastrarVenda telaCadVenda = new FrCadastrarVenda(this, rootPaneCheckingEnabled);
+        telaCadVenda.setVisible(true);
     }//GEN-LAST:event_miCadVendActionPerformed
 
     /**

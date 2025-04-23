@@ -56,5 +56,9 @@ public class Produtos {
     public void setValidade(String validade) {
         this.validade = validade;
     }
+    @Override
+    public String toString() {
+    return this.nome; // Mostra o nome no JComboBox
+}
     
 }

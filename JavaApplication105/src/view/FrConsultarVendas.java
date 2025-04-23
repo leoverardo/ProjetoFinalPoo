@@ -5,9 +5,11 @@
  */
 package view;
 
+import Controller.ClienteController;
 import Controller.VendasController;
 import Model.Vendas;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -46,6 +48,7 @@ public class FrConsultarVendas extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consultar Vendas");
 
         Buscar4.setBackground(new java.awt.Color(204, 204, 204));
         Buscar4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -234,7 +237,22 @@ public void pesquisar(){
         }
     }
     private void btnExcluir4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluir4MouseClicked
-        
+ if(tblVendas.getSelectedRow() != -1){
+
+            int linhaSelecionada = tblVendas.getSelectedRow();
+            String textoCelula = tblVendas.getValueAt(linhaSelecionada, 0).toString();
+
+            int idVenda = Integer.parseInt(textoCelula);
+
+            VendasController controller = new VendasController();
+            if(controller.deletarVenda(idVenda)){
+                pesquisar();
+                JOptionPane.showMessageDialog(rootPane, "Venda removida");
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Venda não foi removida");
+            }
+
+        }        
     }//GEN-LAST:event_btnExcluir4MouseClicked
 
     private void btnExcluir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir4ActionPerformed

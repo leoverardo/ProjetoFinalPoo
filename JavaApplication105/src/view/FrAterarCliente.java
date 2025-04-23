@@ -96,7 +96,7 @@ public class FrAterarCliente extends javax.swing.JDialog {
 
         btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
         btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
+        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
         btnVoltar.setText("Voltar");
         btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -111,7 +111,7 @@ public class FrAterarCliente extends javax.swing.JDialog {
 
         btnCadastrar.setBackground(new java.awt.Color(51, 153, 255));
         btnCadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -226,10 +226,10 @@ public class FrAterarCliente extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(edtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addContainerGap(448, Short.MAX_VALUE))
+                .addContainerGap(462, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 7, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(9, 9, 9)
                     .addComponent(lblNome)
@@ -255,7 +255,7 @@ public class FrAterarCliente extends javax.swing.JDialog {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 7, Short.MAX_VALUE)))
         );
 
         pack();
