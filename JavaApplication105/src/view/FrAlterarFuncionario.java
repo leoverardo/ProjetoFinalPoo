@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -8,6 +8,8 @@ package view;
 import Controller.FuncionarioController;
 import Model.Funcionario;
 import java.awt.event.KeyEvent;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import utils.Utils;
 
@@ -17,41 +19,35 @@ import utils.Utils;
  */
 public class FrAlterarFuncionario extends javax.swing.JDialog {
 
-    
     private int idFuncionario;
-    
-    
+
     /**
      * Creates new form AlterarFuncionario
      */
     public FrAlterarFuncionario(java.awt.Frame parent, boolean modal, int idFuncionario) {
         super(parent, modal);
         initComponents();
-        
-        
+
         this.idFuncionario = idFuncionario;
         carregarFuncionario();
         this.setLocationRelativeTo(null);
 
     }
 
-    
-    
     public void carregarFuncionario() {
-  
-    FuncionarioController controller = new FuncionarioController();
-    Funcionario funcionario = controller.buscarPorIdFuncionario(idFuncionario);
 
-    String codigo = String.valueOf(funcionario.getIdFuncionario());
-    edtCodigo.setText(codigo);
-    edtCargo.setText(funcionario.getCargo());
-    edtNome.setText(funcionario.getNome());
-    edtEmail.setText(funcionario.getEmail());
-    edtCpf.setText(funcionario.getCpf());
+        FuncionarioController controller = new FuncionarioController();
+        Funcionario funcionario = controller.buscarPorIdFuncionario(idFuncionario);
 
-  }
-    
-    
+        String codigo = String.valueOf(funcionario.getIdFuncionario());
+        edtCodigo.setText(codigo);
+        edtCargo.setText(funcionario.getCargo());
+        edtNome.setText(funcionario.getNome());
+        edtEmail.setText(funcionario.getEmail());
+        edtCpf.setText(funcionario.getCpf());
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,6 +83,11 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alterar Funcionário");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(edtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 108, 30));
         getContentPane().add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 487, 43));
@@ -237,88 +238,92 @@ public class FrAlterarFuncionario extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtCodigoActionPerformed
 
-    
-    
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
+
+        ImageIcon icon = new ImageIcon(caminhoImagem);
+
+        // Define o ícone da janela
+        this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowOpened
+
     public boolean verificarCampos() {
-    if (edtNome.getText().equals("")) {
-      JOptionPane.showMessageDialog(null,
-              "O campo 'Nome' em branco");
-      return false;
-    }
-
-    if (!edtNome.getText().matches("^[\\p{L} ]+$")) {
-      JOptionPane.showMessageDialog(null,
-              "O campo 'Nome' possui caracteres inválidos");
-      return false;
-    }
-
-    if (edtEmail.getText().equals("")) {
-      JOptionPane.showMessageDialog(null,
-              "O campo 'Email' em branco");
-      return false;
-    }
-    if (!edtEmail.getText().matches(
-            "^[a-z0-9._-]+@[a-z._]+.[a-z._]+$")) {
-      JOptionPane.showMessageDialog(null,
-              "O campo 'Email' possui formato inválido");
-      return false;
-    }
-
-
-    if (edtSenha.isEditable()) {
-      String senha = new String(edtSenha.getPassword());
-
-      if (senha.length() < 6) {
-        JOptionPane.showMessageDialog(null,
-                "O campo 'Senha' deve ser maior que 8 caracteres");
-        return false;
-      }
-
-      if (!senha.equals(new String(edtConfirmSenha.getPassword()))) {
-        JOptionPane.showMessageDialog(null,
-                "As senhas não são iguais");
-        return false;
-      }
-        if (!edtCpf.getText().matches("^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}")) {//a-
+        if (edtNome.getText().equals("")) {
             JOptionPane.showMessageDialog(null,
-                    "O campo 'Nome' possui formato inválido");
+                    "O campo 'Nome' em branco");
             return false;
+        }
+
+        if (!edtNome.getText().matches("^[\\p{L} ]+$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Nome' possui caracteres inválidos");
+            return false;
+        }
+
+        if (edtEmail.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Email' em branco");
+            return false;
+        }
+        if (!edtEmail.getText().matches(
+                "^[a-z0-9._-]+@[a-z._]+.[a-z._]+$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Email' possui formato inválido");
+            return false;
+        }
+
+        if (edtSenha.isEditable()) {
+            String senha = new String(edtSenha.getPassword());
+
+            if (senha.length() < 6) {
+                JOptionPane.showMessageDialog(null,
+                        "O campo 'Senha' deve ser maior que 8 caracteres");
+                return false;
+            }
+
+            if (!senha.equals(new String(edtConfirmSenha.getPassword()))) {
+                JOptionPane.showMessageDialog(null,
+                        "As senhas não são iguais");
+                return false;
+            }
+            if (!edtCpf.getText().matches("^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}")) {//a-
+                JOptionPane.showMessageDialog(null,
+                        "O campo 'Nome' possui formato inválido");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public void gravar() {
+        Funcionario funcionario = new Funcionario();
+
+        funcionario.setIdFuncionario(idFuncionario);
+        funcionario.setNome(edtNome.getText());
+        funcionario.setEmail(edtEmail.getText());
+        funcionario.setCpf(edtCpf.getText());
+        funcionario.setCargo(edtCargo.getText());
+
+        if (edtSenha.isEditable()) {
+            String senha = new String(edtSenha.getPassword());
+            String senhaHash = Utils.calcularHash(senha);
+            funcionario.setSenha(senhaHash);
+        }
+
+        FuncionarioController controller = new FuncionarioController();
+
+        if (controller.alterarFuncionario(funcionario)) {
+            JOptionPane.showMessageDialog(null,
+                    "funcionario: " + funcionario.getNome()
+                    + " alterado com sucesso!");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "funcionario não será alterado!");
         }
     }
 
-    return true;
-  }
-  
-  public void gravar(){
-      Funcionario funcionario = new Funcionario();
-    
-    funcionario.setIdFuncionario(idFuncionario); 
-    funcionario.setNome(edtNome.getText());
-    funcionario.setEmail(edtEmail.getText());
-    funcionario.setCpf(edtCpf.getText());
-    funcionario.setCargo(edtCargo.getText());
-
-    if (edtSenha.isEditable()) {
-      String senha = new String(edtSenha.getPassword());
-      String senhaHash = Utils.calcularHash(senha);
-      funcionario.setSenha(senhaHash);
-    }
-
-
-    
-    
-    FuncionarioController controller = new FuncionarioController();
-
-    if (controller.alterarFuncionario(funcionario)) {
-      JOptionPane.showMessageDialog(null,
-              "funcionario: " + funcionario.getNome()
-              + " alterado com sucesso!");
-      this.dispose();
-    } else {
-      JOptionPane.showMessageDialog(null,
-              "funcionario não será alterado!");
-    }
-  }
     /**
      * @param args the command line arguments
      */

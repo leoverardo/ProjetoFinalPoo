@@ -1,4 +1,3 @@
-
 package view;
 
 import Controller.ClienteController;
@@ -158,13 +157,12 @@ public class FrCadastroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-   
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
 
         ImageIcon icon = new ImageIcon(caminhoImagem);
 
-        
         this.setIconImage(icon.getImage());
     }//GEN-LAST:event_formWindowOpened
 
@@ -181,20 +179,19 @@ public class FrCadastroCliente extends javax.swing.JFrame {
 
     private void btnCadastrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCadastrarKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-      
-      gravar();
-    }
+
+            gravar();
+        }
     }//GEN-LAST:event_btnCadastrarKeyPressed
 
     private void edtCpfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCpfKeyPressed
-         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             gravar();
         }
     }//GEN-LAST:event_edtCpfKeyPressed
-    
-    
+
     public void gravar() {
-      
+
         Clientes clientes = new Clientes();
 
         String lSenha = new String(edtSenha.getPassword());
@@ -216,9 +213,9 @@ public class FrCadastroCliente extends javax.swing.JFrame {
                     "O cadastro não foi gravado");
         }
     }
-    
+
     public boolean verificarCampos() {
-       
+
         if (!edtNome.getText().matches("^[\\p{L} ]+$")) {
             JOptionPane.showMessageDialog(null,
                     "O campo 'Nome' possui formato inválido");

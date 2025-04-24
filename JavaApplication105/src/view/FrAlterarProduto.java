@@ -7,6 +7,8 @@ package view;
 
 import Controller.ProdutoController;
 import Model.Produtos;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,35 +17,36 @@ import javax.swing.JOptionPane;
  */
 public class FrAlterarProduto extends javax.swing.JDialog {
 
-    
     private int idProduto;
+
     /**
-     * 
-     * 
+     *
+     *
      * Creates new form FrAlterarProduto
      */
     public FrAlterarProduto(java.awt.Frame parent, boolean modal, int idProduto) {
         super(parent, modal);
         initComponents();
-        
-       
+
         this.idProduto = idProduto;
-         carregarProduto();
+        carregarProduto();
     }
- public void carregarProduto() {
-  
-    ProdutoController controller = new ProdutoController();
-    Produtos produto  = controller.buscarPorId(idProduto);
 
-    String codigo = String.valueOf(produto.getIdProduto());
-    edtCodigo.setText(codigo);
-    edtNome.setText(produto.getNome());
-    edtIdCategoria.setText(String.valueOf(produto.getIdCategoria()));
-    edtValidade.setText(produto.getValidade());
-    String preco = String.valueOf(produto.getPreco()); 
-    edtPreco.setText(preco);
+    public void carregarProduto() {
 
-  }
+        ProdutoController controller = new ProdutoController();
+        Produtos produto = controller.buscarPorId(idProduto);
+
+        String codigo = String.valueOf(produto.getIdProduto());
+        edtCodigo.setText(codigo);
+        edtNome.setText(produto.getNome());
+        edtIdCategoria.setText(String.valueOf(produto.getIdCategoria()));
+        edtValidade.setText(produto.getValidade());
+        String preco = String.valueOf(produto.getPreco());
+        edtPreco.setText(preco);
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,12 +78,16 @@ public class FrAlterarProduto extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alterar Produto");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Alterar Produto");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
 
@@ -115,7 +122,6 @@ public class FrAlterarProduto extends javax.swing.JDialog {
         jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 134, 39));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nome Produto");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 137, -1, -1));
 
@@ -124,7 +130,6 @@ public class FrAlterarProduto extends javax.swing.JDialog {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 162, 446, 43));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Validade");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
@@ -137,12 +142,10 @@ public class FrAlterarProduto extends javax.swing.JDialog {
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 446, 51));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Preço");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Categoria");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
@@ -176,7 +179,6 @@ public class FrAlterarProduto extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
 
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
         if (verificarCampos()) {
@@ -184,11 +186,8 @@ public class FrAlterarProduto extends javax.swing.JDialog {
             gravar();
         }
     }//GEN-LAST:event_btnSalvarMouseClicked
-public boolean verificarCampos() {
+    public boolean verificarCampos() {
 
-       
-
-       
         if (!edtPreco.getText().matches("[0-9]+[.]?[0-9]+$")) {
             JOptionPane.showMessageDialog(null,
                     "O campo 'Preço' possui formato inválido");
@@ -202,6 +201,7 @@ public boolean verificarCampos() {
 
         return true;
     }
+
     public void gravar() {
 
         Produtos produtos = new Produtos();
@@ -222,7 +222,7 @@ public boolean verificarCampos() {
                     "O produto não foi alterado");
         }
     }
-    
+
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -234,6 +234,15 @@ public boolean verificarCampos() {
     private void edtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edtCodigoActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
+
+        ImageIcon icon = new ImageIcon(caminhoImagem);
+
+        // Define o ícone da janela
+        this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

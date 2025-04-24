@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Produtos;
 import Model.Vendas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -79,11 +80,19 @@ public class VendasController {
   }
   
     public Vendas buscarPorIdVenda(int idVenda) {
-    String sql = "SELECT vendas.idVenda as idVenda, clientes.nome as NomeCliente, funcionarios.nome as NomeFuncionario, produtos.nome as NomeProduto, vendas.valorVenda "
-            + "from vendas join clientes on vendas.idCliente = clientes.idCliente join "
-            + "funcionarios on vendas.idFuncionario = funcionarios.idFuncionario join "
-            + "produtos on vendas.idProduto = produtos.idProduto"
-            + " where vendas.idVenda = ?";
+   String sql = "SELECT vendas.idVenda as idVenda, "
+        + "vendas.idCliente as idCliente, "
+        + "vendas.idFuncionario as idFuncionario, "
+        + "vendas.idProduto as idProduto, "
+        + "clientes.nome as NomeCliente, "
+        + "funcionarios.nome as NomeFuncionario, "
+        + "produtos.nome as NomeProduto, "
+        + "vendas.valorVenda "
+        + "FROM vendas "
+        + "JOIN clientes ON vendas.idCliente = clientes.idCliente "
+        + "JOIN funcionarios ON vendas.idFuncionario = funcionarios.idFuncionario "
+        + "JOIN produtos ON vendas.idProduto = produtos.idProduto "
+        + "WHERE vendas.idVenda = ?";
 
     GerenciadorConexao gerenciador = new GerenciadorConexao();
     PreparedStatement comando = null;
@@ -101,6 +110,9 @@ public class VendasController {
       if (resultado.next()) {
 
         venda.setIdVenda(resultado.getInt("idVenda"));
+        venda.setIdCliente(resultado.getInt("idCliente"));         
+        venda.setIdFuncionario(resultado.getInt("idFuncionario")); 
+        venda.setIdProduto(resultado.getInt("idProduto"));  
         venda.setNomeCliente(resultado.getString("NomeCliente"));
         venda.setNomeFuncionario(resultado.getString("NomeFuncionario"));
         venda.setNomeProduto(resultado.getString("NomeProduto"));
@@ -135,6 +147,32 @@ public class VendasController {
     } catch (SQLException ex) {
       JOptionPane.showMessageDialog(null, "Erro ao excluir: "
               + ex);
+    } finally {
+      gerenciador.fecharConexao(comando);
+    }
+    return false;
+  }
+     public boolean alterarVenda(Vendas vend) {
+    String sql = "UPDATE vendas SET idCliente=?, idProduto = ?, "
+            + " idFuncionario = ?, valorVenda = ? WHERE idVenda = ?";
+
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+
+    try {
+      comando = gerenciador.prepararComando(sql);
+
+      comando.setInt(1, vend.getIdCliente());
+      comando.setInt(2, vend.getIdProduto());
+      comando.setInt(3, vend.getIdFuncionario());
+      comando.setDouble(4, vend.getValorVenda());
+      comando.setInt(5, vend.getIdVenda());
+
+      comando.executeUpdate();
+
+      return true;
+    } catch (SQLException ex) {
+      JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
     } finally {
       gerenciador.fecharConexao(comando);
     }

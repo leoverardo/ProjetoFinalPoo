@@ -9,50 +9,48 @@ import Controller.ClienteController;
 import Model.Clientes;
 import utils.Utils;
 import java.awt.event.KeyEvent;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author aluno.saolucas
  */
-
- 
-
 public class FrAterarCliente extends javax.swing.JDialog {
 
     /**
      * Creates new form FrAterarCliente
      */
     private int idCliente;
-    
-    public void setIdCliente(int idCliente){
-    this.idCliente = idCliente;
-  }
-    public FrAterarCliente(java.awt.Frame parent, boolean modal,int idCliente) {
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public FrAterarCliente(java.awt.Frame parent, boolean modal, int idCliente) {
         super(parent, modal);
         initComponents();
-        
+
         setIdCliente(idCliente);
-        
+
         carregarCliente();
         this.setLocationRelativeTo(null);
     }
 
-    
-    
     public void carregarCliente() {
-  
-    ClienteController controller = new ClienteController();
-    Clientes cliente  = controller.buscarPorId(idCliente);
 
-    String codigo = String.valueOf(cliente.getIdCliente());
-    edtCodigo.setText(codigo);
-    edtNome.setText(cliente.getNome());
-    edtEmail.setText(cliente.getEmail());
-    edtCpf.setText(cliente.getCpf());
+        ClienteController controller = new ClienteController();
+        Clientes cliente = controller.buscarPorId(idCliente);
 
-  }
-    
+        String codigo = String.valueOf(cliente.getIdCliente());
+        edtCodigo.setText(codigo);
+        edtNome.setText(cliente.getNome());
+        edtEmail.setText(cliente.getEmail());
+        edtCpf.setText(cliente.getCpf());
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,6 +81,11 @@ public class FrAterarCliente extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alterar Cliente");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         edtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,89 +294,93 @@ public class FrAterarCliente extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnCadastrarKeyPressed
 
-    
     public boolean verificarCampos() {
-    if (edtNome.getText().equals("")) {
-      JOptionPane.showMessageDialog(null,
-              "O campo 'Nome' em branco");
-      return false;
-    }
-
-    if (!edtNome.getText().matches("^[\\p{L} ]+$")) {
-      JOptionPane.showMessageDialog(null,
-              "O campo 'Nome' possui caracteres inválidos");
-      return false;
-    }
-
-    if (edtEmail.getText().equals("")) {
-      JOptionPane.showMessageDialog(null,
-              "O campo 'Email' em branco");
-      return false;
-    }
-    if (!edtEmail.getText().matches(
-            "^[a-z0-9._-]+@[a-z._]+.[a-z._]+$")) {
-      JOptionPane.showMessageDialog(null,
-              "O campo 'Email' possui formato inválido");
-      return false;
-    }
-
-
-    if (edtSenha.isEditable()) {
-      String senha = new String(edtSenha.getPassword());
-
-      if (senha.length() < 6) {
-        JOptionPane.showMessageDialog(null,
-                "O campo 'Senha' deve ser maior que 8 caracteres");
-        return false;
-      }
-
-      if (!senha.equals(new String(edtConfirmSenha.getPassword()))) {
-        JOptionPane.showMessageDialog(null,
-                "As senhas não são iguais");
-        return false;
-      }
-        if (!edtCpf.getText().matches("^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}")) {//a-
+        if (edtNome.getText().equals("")) {
             JOptionPane.showMessageDialog(null,
-                    "O campo 'Nome' possui formato inválido");
+                    "O campo 'Nome' em branco");
             return false;
         }
+
+        if (!edtNome.getText().matches("^[\\p{L} ]+$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Nome' possui caracteres inválidos");
+            return false;
+        }
+
+        if (edtEmail.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Email' em branco");
+            return false;
+        }
+        if (!edtEmail.getText().matches(
+                "^[a-z0-9._-]+@[a-z._]+.[a-z._]+$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Email' possui formato inválido");
+            return false;
+        }
+
+        if (edtSenha.isEditable()) {
+            String senha = new String(edtSenha.getPassword());
+
+            if (senha.length() < 6) {
+                JOptionPane.showMessageDialog(null,
+                        "O campo 'Senha' deve ser maior que 8 caracteres");
+                return false;
+            }
+
+            if (!senha.equals(new String(edtConfirmSenha.getPassword()))) {
+                JOptionPane.showMessageDialog(null,
+                        "As senhas não são iguais");
+                return false;
+            }
+            if (!edtCpf.getText().matches("^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}")) {//a-
+                JOptionPane.showMessageDialog(null,
+                        "O campo 'Nome' possui formato inválido");
+                return false;
+            }
+        }
+
+        return true;
     }
 
-    return true;
-  }
-  
-  public void gravar(){
-    Clientes cliente = new Clientes();
-    
-    cliente.setIdCliente(idCliente); 
-    cliente.setNome(edtNome.getText());
-    cliente.setEmail(edtEmail.getText());
-    cliente.setCpf(edtCpf.getText());
+    public void gravar() {
+        Clientes cliente = new Clientes();
 
-    if (edtSenha.isEditable()) {
-      String senha = new String(edtSenha.getPassword());
-      String senhaHash = Utils.calcularHash(senha);
-      cliente.setSenha(senhaHash);
+        cliente.setIdCliente(idCliente);
+        cliente.setNome(edtNome.getText());
+        cliente.setEmail(edtEmail.getText());
+        cliente.setCpf(edtCpf.getText());
+
+        if (edtSenha.isEditable()) {
+            String senha = new String(edtSenha.getPassword());
+            String senhaHash = Utils.calcularHash(senha);
+            cliente.setSenha(senhaHash);
+        }
+
+        ClienteController controller = new ClienteController();
+
+        if (controller.alterarCliente(cliente)) {
+            JOptionPane.showMessageDialog(null,
+                    "Usuário: " + cliente.getNome()
+                    + " alterado com sucesso!");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Usuário não será alterado!");
+        }
     }
-
-
-    
-    
-    ClienteController controller = new ClienteController();
-
-    if (controller.alterarCliente(cliente)) {
-      JOptionPane.showMessageDialog(null,
-              "Usuário: " + cliente.getNome()
-              + " alterado com sucesso!");
-      this.dispose();
-    } else {
-      JOptionPane.showMessageDialog(null,
-              "Usuário não será alterado!");
-    }
-  }
     private void edtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edtCodigoActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
+
+        ImageIcon icon = new ImageIcon(caminhoImagem);
+
+        // Define o ícone da janela
+        this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

@@ -23,7 +23,7 @@ public class FrConsultarCliente extends javax.swing.JDialog {
     public FrConsultarCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
     }
 
@@ -214,27 +214,27 @@ public class FrConsultarCliente extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void pesquisar(){
+    public void pesquisar() {
         DefaultTableModel modelotabela = (DefaultTableModel) tblClientes.getModel();
-        
+
         modelotabela.setNumRows(0);
-        
+
         ClienteController controller = new ClienteController();
-        
+
         List<Clientes> listaUsuario = controller.listarCliente();
-        
-        for(Clientes cli: listaUsuario){
+
+        for (Clientes cli : listaUsuario) {
             Object[] linha = {
                 cli.getIdCliente(),
                 cli.getNome(),
                 cli.getEmail(),
                 cli.getCpf()
             };
-        modelotabela.addRow(linha);
+            modelotabela.addRow(linha);
         }
     }
     private void btnExcluir2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluir2MouseClicked
-        if(tblClientes.getSelectedRow() != -1){
+        if (tblClientes.getSelectedRow() != -1) {
 
             int linhaSelecionada = tblClientes.getSelectedRow();
             String textoCelula = tblClientes.getValueAt(linhaSelecionada, 0).toString();
@@ -242,10 +242,10 @@ public class FrConsultarCliente extends javax.swing.JDialog {
             int idCliente = Integer.parseInt(textoCelula);
 
             ClienteController controller = new ClienteController();
-            if(controller.deletarCliente(idCliente)){
+            if (controller.deletarCliente(idCliente)) {
                 pesquisar();
                 JOptionPane.showMessageDialog(rootPane, "O usuário foi deletado");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "O usuário não foi deletado");
             }
 
@@ -265,7 +265,7 @@ public class FrConsultarCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
-        if(tblClientes.getSelectedRow() != -1){
+        if (tblClientes.getSelectedRow() != -1) {
             int linhaSelecionada = tblClientes.getSelectedRow();
             String textoCelula = tblClientes.getValueAt(linhaSelecionada, 0).toString();
 

@@ -8,11 +8,14 @@ package view;
 import Controller.ClienteController;
 import Controller.FuncionarioController;
 import Controller.ProdutoController;
+import Controller.VendasController;
 import Model.Clientes;
 import Model.Funcionario;
 import Model.Produtos;
 import Model.Vendas;
+import java.net.URL;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -29,7 +32,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     public FrCadastrarVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
     }
 
@@ -50,7 +53,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        txtVenda = new javax.swing.JTextPane();
+        edtPreco = new javax.swing.JTextPane();
         btnSalvar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         edtCodProduto = new javax.swing.JTextField();
@@ -62,17 +65,23 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         btnBuscarProduto = new javax.swing.JButton();
         btnBuscarFuncionario = new javax.swing.JButton();
         btnBuscarCliente = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar Venda");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setToolTipText("");
+        jPanel1.setToolTipText("Cadastrar Venda");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Cadastrar Vendas");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 261, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -91,7 +100,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         jLabel7.setText("Valor Venda");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
-        jScrollPane8.setViewportView(txtVenda);
+        jScrollPane8.setViewportView(edtPreco);
 
         jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 140, 30));
 
@@ -115,6 +124,11 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
         btnVoltar.setText("Voltar");
+        btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVoltarMouseClicked(evt);
+            }
+        });
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -152,6 +166,9 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         });
         jPanel1.add(btnBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, -1));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cesta-de-compras.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -175,27 +192,83 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
 
-    
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
-  
+        gravar();
     }//GEN-LAST:event_btnSalvarMouseClicked
 
     private void btnBuscarProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarProdutoMouseClicked
         FrBuscarProduto telaBuscProduto = new FrBuscarProduto(null, true);
         telaBuscProduto.setVisible(true);
+        //Quando fechar a tela de consultar vai voltar aqui e testar se selecionou ou não
+        if (!telaBuscProduto.getIdProduto().equals("")) {
+            edtCodProduto.setText(telaBuscProduto.getIdProduto());
+            edtNomeProduto.setText(telaBuscProduto.getNomeProduto());
+            edtPreco.setText(telaBuscProduto.getPreco());
+        } else {
+            JOptionPane.showMessageDialog(this, "Não foi selecionado um produto");
+        }
     }//GEN-LAST:event_btnBuscarProdutoMouseClicked
 
     private void btnBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarClienteMouseClicked
         FrBuscarCliente telaBuscCliente = new FrBuscarCliente(null, true);
         telaBuscCliente.setVisible(true);
+        //Quando fechar a tela de consultar vai voltar aqui e testar se selecionou ou não
+        if (!telaBuscCliente.getIdCliente().equals("")) {
+            edtCodCliente.setText(telaBuscCliente.getIdCliente());
+            edtNomeCliente.setText(telaBuscCliente.getNome());
+        } else {
+            JOptionPane.showMessageDialog(this, "Não foi selecionado um cliente");
+        }
     }//GEN-LAST:event_btnBuscarClienteMouseClicked
 
     private void btnBuscarFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarFuncionarioMouseClicked
-         FrBuscarFuncionario telaBuscFuncionario = new FrBuscarFuncionario(null, true);
+        FrBuscarFuncionario telaBuscFuncionario = new FrBuscarFuncionario(null, true);
         telaBuscFuncionario.setVisible(true);
+        //Quando fechar a tela de consultar vai voltar aqui e testar se selecionou ou não
+        if (!telaBuscFuncionario.getIdFuncionario().equals("")) {
+            edtCodFuncionario.setText(telaBuscFuncionario.getIdFuncionario());
+            edtNomeFuncionario.setText(telaBuscFuncionario.getNomeFuncionario());
+        } else {
+            JOptionPane.showMessageDialog(this, "Não foi selecionado um funcionário");
+        }
     }//GEN-LAST:event_btnBuscarFuncionarioMouseClicked
-   
-    
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
+
+        ImageIcon icon = new ImageIcon(caminhoImagem);
+
+        // Define o ícone da janela
+        this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnVoltarMouseClicked
+    public void gravar() {
+
+        Vendas vendas = new Vendas();
+
+        int idFuncionario = Integer.parseInt(edtCodFuncionario.getText());
+        vendas.setIdFuncionario(idFuncionario);
+        int idCliente = Integer.parseInt(edtCodCliente.getText());
+        vendas.setIdCliente(idCliente);
+        int idProduto = Integer.parseInt(edtCodProduto.getText());
+        vendas.setIdProduto(idProduto);
+        double valor = Double.parseDouble(edtPreco.getText().replace(",", "."));
+        vendas.setValorVenda(valor);
+
+        VendasController controller = new VendasController();
+
+        if (controller.inserirVenda(vendas)) {
+            JOptionPane.showMessageDialog(null,
+                    "Venda realizada com sucesso");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "A venda não foi realizada");
+        }
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -248,7 +321,9 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     private javax.swing.JTextField edtNomeCliente;
     private javax.swing.JTextField edtNomeFuncionario;
     private javax.swing.JTextField edtNomeProduto;
+    private javax.swing.JTextPane edtPreco;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -256,6 +331,5 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTextPane txtVenda;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,3 @@
-
 package view;
 
 import Controller.ClienteController;
@@ -8,17 +7,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import utils.Utils;
 
-
 public class FrLoginCliente extends javax.swing.JFrame {
 
-    
     public FrLoginCliente() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -145,17 +141,17 @@ public class FrLoginCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_edtSenhaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-    URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
+        URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
 
-    ImageIcon icon = new ImageIcon(caminhoImagem);
+        ImageIcon icon = new ImageIcon(caminhoImagem);
 
-    // Define o ícone da janela
-    this.setIconImage(icon.getImage());
+        // Define o ícone da janela
+        this.setIconImage(icon.getImage());
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseClicked
         FrCadastroCliente telaCadastroCliente = new FrCadastroCliente();
-    
+
         telaCadastroCliente.setVisible(true);
     }//GEN-LAST:event_btnCadastrarMouseClicked
 
@@ -164,55 +160,55 @@ public class FrLoginCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void edtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSenhaKeyPressed
-         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-          FrMenu telaMenu = new FrMenu();
-           realizarLogin();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            FrMenu telaMenu = new FrMenu();
+            realizarLogin();
             telaMenu.setVisible(true);
             this.dispose();
-        
-    }
+
+        }
     }//GEN-LAST:event_edtSenhaKeyPressed
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-       FrMenu telaMenu = new FrMenu();
-           realizarLogin();
-           if(realizarLogin()){
-       telaMenu.setVisible(true);
-           }else{
-       this.dispose();
-           }
+        FrMenu telaMenu = new FrMenu();
+        realizarLogin();
+        if (realizarLogin()) {
+            telaMenu.setVisible(true);
+        } else {
+            this.dispose();
+        }
     }//GEN-LAST:event_btnEntrarMouseClicked
 
-    
-     private boolean realizarLogin() {
-    String email = edtEmail.getText();
-    String senha = new String(edtSenha.getPassword());
-    
-    if (email.equals("")) {
-      JOptionPane.showMessageDialog(null,
-              "Campo 'Email' em branco!");
+    private boolean realizarLogin() {
+        String email = edtEmail.getText();
+        String senha = new String(edtSenha.getPassword());
+
+        if (email.equals("")) {
+            JOptionPane.showMessageDialog(null,
+                    "Campo 'Email' em branco!");
+        }
+
+        if (senha.equals("")) {
+            JOptionPane.showMessageDialog(null,
+                    "Campo 'Senha' em branco!");
+        }
+
+        senha = Utils.calcularHash(senha);
+
+        ClienteController controller = new ClienteController();
+
+        boolean autenticado = controller.loginCliente(email, senha);
+
+        if (autenticado) {
+            JOptionPane.showMessageDialog(null, "Usuario logado ");
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos");
+
+        }
+        return false;
     }
 
-    if (senha.equals("")) {
-      JOptionPane.showMessageDialog(null,
-              "Campo 'Senha' em branco!");
-    }
-    
-    senha = Utils.calcularHash(senha);
-
-    ClienteController controller = new ClienteController();
-
-    boolean autenticado = controller.loginCliente(email, senha);
-
-    if (autenticado) {
-      JOptionPane.showMessageDialog(null, "Usuario logado ");
-      return true;
-    } else {
-      JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos");
-      
-    }
-    return false;
-  }
     /**
      * @param args the command line arguments
      */

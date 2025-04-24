@@ -8,7 +8,9 @@ package view;
 import Controller.ClienteController;
 import Controller.VendasController;
 import Model.Vendas;
+import java.net.URL;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,7 +26,7 @@ public class FrConsultarVendas extends javax.swing.JDialog {
     public FrConsultarVendas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
     }
 
@@ -49,6 +51,11 @@ public class FrConsultarVendas extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consultar Vendas");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         Buscar4.setBackground(new java.awt.Color(204, 204, 204));
         Buscar4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -216,16 +223,16 @@ public class FrConsultarVendas extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public void pesquisar(){
+public void pesquisar() {
         DefaultTableModel modelotabela = (DefaultTableModel) tblVendas.getModel();
-        
+
         modelotabela.setNumRows(0);
-        
+
         VendasController controller = new VendasController();
-        
+
         List<Vendas> listaVendas = controller.listarVendas();
-        
-        for(Vendas vend: listaVendas){
+
+        for (Vendas vend : listaVendas) {
             Object[] linha = {
                 vend.getIdVenda(),
                 vend.getNomeCliente(),
@@ -233,11 +240,11 @@ public void pesquisar(){
                 vend.getNomeProduto(),
                 vend.getValorVenda()
             };
-        modelotabela.addRow(linha);
+            modelotabela.addRow(linha);
         }
     }
     private void btnExcluir4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluir4MouseClicked
- if(tblVendas.getSelectedRow() != -1){
+        if (tblVendas.getSelectedRow() != -1) {
 
             int linhaSelecionada = tblVendas.getSelectedRow();
             String textoCelula = tblVendas.getValueAt(linhaSelecionada, 0).toString();
@@ -245,14 +252,14 @@ public void pesquisar(){
             int idVenda = Integer.parseInt(textoCelula);
 
             VendasController controller = new VendasController();
-            if(controller.deletarVenda(idVenda)){
+            if (controller.deletarVenda(idVenda)) {
                 pesquisar();
                 JOptionPane.showMessageDialog(rootPane, "Venda removida");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Venda não foi removida");
             }
 
-        }        
+        }
     }//GEN-LAST:event_btnExcluir4MouseClicked
 
     private void btnExcluir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir4ActionPerformed
@@ -268,7 +275,16 @@ public void pesquisar(){
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
-     
+        if (tblVendas.getSelectedRow() != -1) {
+            int linhaSelecionada = tblVendas.getSelectedRow();
+            String textoCelula = tblVendas.getValueAt(linhaSelecionada, 0).toString();
+
+            int idVenda = Integer.parseInt(textoCelula);
+            FrAlterarVenda telaAltVenda = new FrAlterarVenda(null, true, idVenda);
+            telaAltVenda.setVisible(true);
+            this.setLocationRelativeTo(null);
+            pesquisar();
+        }
     }//GEN-LAST:event_btnAlterarMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -286,6 +302,15 @@ public void pesquisar(){
     private void Buscar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar4MouseClicked
 
     }//GEN-LAST:event_Buscar4MouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
+
+        ImageIcon icon = new ImageIcon(caminhoImagem);
+
+        // Define o ícone da janela
+        this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

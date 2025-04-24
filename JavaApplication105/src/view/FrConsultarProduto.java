@@ -7,7 +7,9 @@ package view;
 
 import Controller.ProdutoController;
 import Model.Produtos;
+import java.net.URL;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,7 +25,7 @@ public class FrConsultarProduto extends javax.swing.JDialog {
     public FrConsultarProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
     }
 
@@ -48,6 +50,11 @@ public class FrConsultarProduto extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Produtos");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         Buscar4.setBackground(new java.awt.Color(204, 204, 204));
         Buscar4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -215,16 +222,16 @@ public class FrConsultarProduto extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void pesquisar(){
+    public void pesquisar() {
         DefaultTableModel modelotabela = (DefaultTableModel) tblProdutos.getModel();
-        
+
         modelotabela.setNumRows(0);
-        
+
         ProdutoController controller = new ProdutoController();
-        
+
         List<Produtos> listaProdutos = controller.consultarProdutos();
-        
-        for(Produtos pro: listaProdutos){
+
+        for (Produtos pro : listaProdutos) {
             Object[] linha = {
                 pro.getIdProduto(),
                 pro.getNome(),
@@ -232,11 +239,11 @@ public class FrConsultarProduto extends javax.swing.JDialog {
                 pro.getCategoria(),
                 pro.getValidade()
             };
-        modelotabela.addRow(linha);
+            modelotabela.addRow(linha);
         }
     }
     private void btnExcluir4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluir4MouseClicked
-        if(tblProdutos.getSelectedRow() != -1){
+        if (tblProdutos.getSelectedRow() != -1) {
 
             int linhaSelecionada = tblProdutos.getSelectedRow();
             String textoCelula = tblProdutos.getValueAt(linhaSelecionada, 0).toString();
@@ -244,14 +251,14 @@ public class FrConsultarProduto extends javax.swing.JDialog {
             int idProdutos = Integer.parseInt(textoCelula);
 
             ProdutoController controller = new ProdutoController();
-            if(controller.deletarProduto(idProdutos)){
+            if (controller.deletarProduto(idProdutos)) {
                 pesquisar();
                 JOptionPane.showMessageDialog(rootPane, "O produto foi removido");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "O produto não foi removido");
             }
 
-        }     
+        }
     }//GEN-LAST:event_btnExcluir4MouseClicked
 
     private void btnExcluir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir4ActionPerformed
@@ -267,7 +274,7 @@ public class FrConsultarProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
-        if(tblProdutos.getSelectedRow() != -1){
+        if (tblProdutos.getSelectedRow() != -1) {
             int linhaSelecionada = tblProdutos.getSelectedRow();
             String textoCelula = tblProdutos.getValueAt(linhaSelecionada, 0).toString();
 
@@ -296,6 +303,15 @@ public class FrConsultarProduto extends javax.swing.JDialog {
     private void Buscar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar4MouseClicked
 
     }//GEN-LAST:event_Buscar4MouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
+
+        ImageIcon icon = new ImageIcon(caminhoImagem);
+
+        // Define o ícone da janela
+        this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

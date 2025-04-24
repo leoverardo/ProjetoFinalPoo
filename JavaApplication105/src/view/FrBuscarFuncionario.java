@@ -5,18 +5,40 @@
  */
 package view;
 
+import Controller.ClienteController;
+import Controller.FuncionarioController;
+import Model.Clientes;
+import Model.Funcionario;
+import java.net.URL;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author aluno.saolucas
  */
 public class FrBuscarFuncionario extends javax.swing.JDialog {
 
-    /**
-     * Creates new form FrBuscarFuncionario
-     */
+    //Atributos com os dados
+    private String idFuncionario;
+    private String nomeFuncionario;
+
+    //Métodos para ler os atributos por fora da classe
+    public String getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public String getNomeFuncionario() {
+        return nomeFuncionario;
+    }
+
     public FrBuscarFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+
+        idFuncionario = "";
+        nomeFuncionario = "";
         this.setLocationRelativeTo(null);
     }
 
@@ -36,8 +58,15 @@ public class FrBuscarFuncionario extends javax.swing.JDialog {
         btnBuscar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         btnSelecionar1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Buscar Funcionários");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Funcionários");
@@ -63,7 +92,7 @@ public class FrBuscarFuncionario extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblFuncionarios);
 
-        btnBuscar.setBackground(new java.awt.Color(0, 153, 255));
+        btnBuscar.setBackground(new java.awt.Color(51, 153, 255));
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -72,7 +101,7 @@ public class FrBuscarFuncionario extends javax.swing.JDialog {
             }
         });
 
-        btnVoltar.setBackground(new java.awt.Color(255, 51, 51));
+        btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
         btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
         btnVoltar.setText("Voltar");
         btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -81,7 +110,7 @@ public class FrBuscarFuncionario extends javax.swing.JDialog {
             }
         });
 
-        btnSelecionar1.setBackground(new java.awt.Color(0, 153, 255));
+        btnSelecionar1.setBackground(new java.awt.Color(51, 153, 255));
         btnSelecionar1.setForeground(new java.awt.Color(255, 255, 255));
         btnSelecionar1.setText("Selecionar");
         btnSelecionar1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,6 +118,8 @@ public class FrBuscarFuncionario extends javax.swing.JDialog {
                 btnSelecionar1MouseClicked(evt);
             }
         });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginFuncionario2.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,16 +138,23 @@ public class FrBuscarFuncionario extends javax.swing.JDialog {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabel1)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -141,7 +179,7 @@ public class FrBuscarFuncionario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
-      
+        pesquisar();
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
@@ -149,8 +187,48 @@ public class FrBuscarFuncionario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void btnSelecionar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelecionar1MouseClicked
-        // TODO add your handling code here:
+        if (tblFuncionarios.getSelectedRow() != -1) {
+            //Pega a linha selecionada
+            int linhaSelecionada = tblFuncionarios.getSelectedRow();
+
+            //Pega o código do cliente da grade, coluna 0
+            String textoId = tblFuncionarios.getValueAt(linhaSelecionada, 0).toString();
+            idFuncionario = textoId;
+
+            //Pega o nome do cliente da grade, agora a coluna 1
+            String textoNome = tblFuncionarios.getValueAt(linhaSelecionada, 1).toString();
+            nomeFuncionario = textoNome;
+
+            //Fecha a tela
+            this.dispose();
+        }
     }//GEN-LAST:event_btnSelecionar1MouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
+
+        ImageIcon icon = new ImageIcon(caminhoImagem);
+
+        // Define o ícone da janela
+        this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowOpened
+    public void pesquisar() {
+        DefaultTableModel modelotabela = (DefaultTableModel) tblFuncionarios.getModel();
+
+        modelotabela.setNumRows(0);
+
+        FuncionarioController controller = new FuncionarioController();
+
+        List<Funcionario> listaUsuario = controller.listarFuncionario();
+
+        for (Funcionario fun : listaUsuario) {
+            Object[] linha = {
+                fun.getIdFuncionario(),
+                fun.getNome()
+            };
+            modelotabela.addRow(linha);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -199,6 +277,7 @@ public class FrBuscarFuncionario extends javax.swing.JDialog {
     private javax.swing.JButton btnSelecionar1;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblFuncionarios;

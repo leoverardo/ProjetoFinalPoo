@@ -7,6 +7,8 @@ package view;
 
 import Controller.ProdutoController;
 import Model.Produtos;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -55,9 +57,14 @@ public class FrCadastroProduto extends javax.swing.JDialog {
         setTitle("Cadastro de Produto");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setToolTipText("Cadastro de Produto");
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Cadastro Produto");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/caracteristicas.png"))); // NOI18N
@@ -93,19 +100,16 @@ public class FrCadastroProduto extends javax.swing.JDialog {
         });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nome Produto");
 
         jScrollPane1.setViewportView(edtNome);
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Categoria");
 
         jScrollPane2.setViewportView(edtIdCategoria);
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Validade");
 
         jScrollPane3.setViewportView(edtValidade);
@@ -113,7 +117,6 @@ public class FrCadastroProduto extends javax.swing.JDialog {
         jScrollPane4.setViewportView(edtPreco);
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Preço");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -211,6 +214,15 @@ public class FrCadastroProduto extends javax.swing.JDialog {
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
         this.dispose();
     }//GEN-LAST:event_btnVoltarMouseClicked
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
+
+        ImageIcon icon = new ImageIcon(caminhoImagem);
+
+        // Define o ícone da janela
+        this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_jPanel1MouseClicked
 
     public void gravar() {
 

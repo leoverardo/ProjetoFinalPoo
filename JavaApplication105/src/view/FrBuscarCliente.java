@@ -7,7 +7,9 @@ package view;
 
 import Controller.ClienteController;
 import Model.Clientes;
+import java.net.URL;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,34 +17,33 @@ import javax.swing.table.DefaultTableModel;
  * @author aluno.saolucas
  */
 public class FrBuscarCliente extends javax.swing.JDialog {
-     //Atributos com os dados
-  private String idCliente;
-  private String nome;
+    //Atributos com os dados
 
-  //Métodos para ler os atributos por fora da classe
-  public String getId() {
-    return idCliente;
-  }
+    private String idCliente;
+    private String nome;
 
-  public String getNome() {
-    return nome;
-    
-  }
+    //Métodos para ler os atributos por fora da classe
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+    public String getNome() {
+        return nome;
+
+    }
 
     /**
      * Creates new form FrBuscarCliente
      */
     public FrBuscarCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-    initComponents();
-    
-    //Inicializo os atributos
-    idCliente = "";
-    nome = "";
-    this.setLocationRelativeTo(null);
-    }
+        initComponents();
 
-    
+        //Inicializo os atributos
+        idCliente = "";
+        nome = "";
+        this.setLocationRelativeTo(null);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,8 +61,15 @@ public class FrBuscarCliente extends javax.swing.JDialog {
         btnBuscar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         btnSelecionar1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Buscar Clientes");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Clientes");
@@ -87,7 +95,7 @@ public class FrBuscarCliente extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblClientes);
 
-        btnBuscar.setBackground(new java.awt.Color(51, 102, 255));
+        btnBuscar.setBackground(new java.awt.Color(51, 153, 255));
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,7 +104,7 @@ public class FrBuscarCliente extends javax.swing.JDialog {
             }
         });
 
-        btnVoltar.setBackground(new java.awt.Color(255, 51, 51));
+        btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
         btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
         btnVoltar.setText("Voltar");
         btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,7 +113,7 @@ public class FrBuscarCliente extends javax.swing.JDialog {
             }
         });
 
-        btnSelecionar1.setBackground(new java.awt.Color(51, 102, 255));
+        btnSelecionar1.setBackground(new java.awt.Color(51, 153, 255));
         btnSelecionar1.setForeground(new java.awt.Color(255, 255, 255));
         btnSelecionar1.setText("Selecionar");
         btnSelecionar1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,6 +121,8 @@ public class FrBuscarCliente extends javax.swing.JDialog {
                 btnSelecionar1MouseClicked(evt);
             }
         });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginCliente2.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,16 +141,24 @@ public class FrBuscarCliente extends javax.swing.JDialog {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(jLabel1)))
+                        .addGap(95, 95, 95)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel1)
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -173,25 +191,49 @@ public class FrBuscarCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void btnSelecionar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelecionar1MouseClicked
-        // TODO add your handling code here:
+        if (tblClientes.getSelectedRow() != -1) {
+            //Pega a linha selecionada
+            int linhaSelecionada = tblClientes.getSelectedRow();
+
+            //Pega o código do cliente da grade, coluna 0
+            String textoId = tblClientes.getValueAt(linhaSelecionada, 0).toString();
+            idCliente = textoId;
+
+            //Pega o nome do cliente da grade, agora a coluna 1
+            String textoNome = tblClientes.getValueAt(linhaSelecionada, 1).toString();
+            nome = textoNome;
+
+            //Fecha a tela
+            this.dispose();
+        }
     }//GEN-LAST:event_btnSelecionar1MouseClicked
- public void pesquisar(){
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
+
+        ImageIcon icon = new ImageIcon(caminhoImagem);
+
+        // Define o ícone da janela
+        this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowOpened
+    public void pesquisar() {
         DefaultTableModel modelotabela = (DefaultTableModel) tblClientes.getModel();
-        
+
         modelotabela.setNumRows(0);
-        
+
         ClienteController controller = new ClienteController();
-        
+
         List<Clientes> listaUsuario = controller.listarCliente();
-        
-        for(Clientes cli: listaUsuario){
+
+        for (Clientes cli : listaUsuario) {
             Object[] linha = {
                 cli.getIdCliente(),
                 cli.getNome()
             };
-        modelotabela.addRow(linha);
+            modelotabela.addRow(linha);
         }
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -236,6 +278,7 @@ public class FrBuscarCliente extends javax.swing.JDialog {
     private javax.swing.JButton btnSelecionar1;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblClientes;

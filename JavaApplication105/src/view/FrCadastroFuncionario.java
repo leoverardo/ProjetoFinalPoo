@@ -252,7 +252,7 @@ public class FrCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarKeyPressed
 
     private void edtCpfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCpfKeyPressed
-         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             gravar();
         }
     }//GEN-LAST:event_edtCpfKeyPressed
@@ -262,7 +262,7 @@ public class FrCadastroFuncionario extends javax.swing.JFrame {
 
         String lSenha = new String(edtSenha.getPassword());
         String lHashSenha = Utils.calcularHash(lSenha);
-        
+
         fun.setCargo(edtCargo.getText());
         fun.setNome(edtNome.getText());
         fun.setEmail(edtEmail.getText());

@@ -23,7 +23,7 @@ public class FrConsultarFuncionarios extends javax.swing.JDialog {
     public FrConsultarFuncionarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
     }
 
@@ -215,16 +215,16 @@ public class FrConsultarFuncionarios extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public void pesquisar(){
+public void pesquisar() {
         DefaultTableModel modelotabela = (DefaultTableModel) tblFuncionarios.getModel();
-        
+
         modelotabela.setNumRows(0);
-        
+
         FuncionarioController controller = new FuncionarioController();
-        
+
         List<Funcionario> listaFuncionario = controller.listarFuncionario();
-        
-        for(Funcionario fun: listaFuncionario){
+
+        for (Funcionario fun : listaFuncionario) {
             Object[] linha = {
                 fun.getIdFuncionario(),
                 fun.getNome(),
@@ -232,11 +232,11 @@ public void pesquisar(){
                 fun.getCpf(),
                 fun.getCargo()
             };
-        modelotabela.addRow(linha);
+            modelotabela.addRow(linha);
         }
     }
     private void btnExcluir2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluir2MouseClicked
-        if(tblFuncionarios.getSelectedRow() != -1){
+        if (tblFuncionarios.getSelectedRow() != -1) {
 
             int linhaSelecionada = tblFuncionarios.getSelectedRow();
             String textoCelula = tblFuncionarios.getValueAt(linhaSelecionada, 0).toString();
@@ -244,10 +244,10 @@ public void pesquisar(){
             int idFuncionario = Integer.parseInt(textoCelula);
 
             FuncionarioController controller = new FuncionarioController();
-            if(controller.deletarFuncionario(idFuncionario)){
+            if (controller.deletarFuncionario(idFuncionario)) {
                 pesquisar();
                 JOptionPane.showMessageDialog(rootPane, "O usuário foi deletado");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "O usuário não foi deletado");
             }
 
@@ -267,7 +267,7 @@ public void pesquisar(){
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
-        if(tblFuncionarios.getSelectedRow() != -1){
+        if (tblFuncionarios.getSelectedRow() != -1) {
             int linhaSelecionada = tblFuncionarios.getSelectedRow();
             String textoCelula = tblFuncionarios.getValueAt(linhaSelecionada, 0).toString();
 

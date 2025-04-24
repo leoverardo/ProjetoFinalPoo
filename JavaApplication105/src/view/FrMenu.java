@@ -5,6 +5,9 @@
  */
 package view;
 
+import java.net.URL;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author aluno.saolucas
@@ -50,6 +53,11 @@ public class FrMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoMercado (1).jpg"))); // NOI18N
 
@@ -101,6 +109,11 @@ public class FrMenu extends javax.swing.JFrame {
 
         miCadCli.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         miCadCli.setText("Cadastrar");
+        miCadCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCadCliActionPerformed(evt);
+            }
+        });
         jMenu3.add(miCadCli);
 
         miListarCli.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -236,6 +249,20 @@ public class FrMenu extends javax.swing.JFrame {
         FrCadastrarVenda telaCadVenda = new FrCadastrarVenda(this, rootPaneCheckingEnabled);
         telaCadVenda.setVisible(true);
     }//GEN-LAST:event_miCadVendActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       URL caminhoImagem = getClass().getResource("/images/logoMercado2.png");
+
+    ImageIcon icon = new ImageIcon(caminhoImagem);
+
+    // Define o ícone da janela
+    this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowOpened
+
+    private void miCadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCadCliActionPerformed
+        FrCadastroCliente telaCadCli = new FrCadastroCliente();
+        telaCadCli.setVisible(true);
+    }//GEN-LAST:event_miCadCliActionPerformed
 
     /**
      * @param args the command line arguments
