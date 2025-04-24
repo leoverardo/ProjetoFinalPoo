@@ -9,6 +9,15 @@ public class Vendas {
     private String nomeCliente;
     private int idFuncionario;
    private String nomeFuncionario;
+   private int quantidade;
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 
     public String getNomeProduto() {
         return nomeProduto;

@@ -14,8 +14,8 @@ import javax.swing.JOptionPane;
 
 public class VendasController {
     public boolean inserirVenda(Vendas venda){
-    String sql = "INSERT INTO vendas (idProduto, idCliente, idFuncionario, valorVenda) "
-               + " VALUES (?,?,?,?)";
+    String sql = "INSERT INTO vendas (idProduto, idCliente, idFuncionario, valorVenda, quantidade) "
+               + " VALUES (?,?,?,?,?)";
     
     GerenciadorConexao gerenciador = new GerenciadorConexao();
     PreparedStatement comando = null;
@@ -26,6 +26,7 @@ public class VendasController {
       comando.setInt(2, venda.getIdCliente());
       comando.setInt(3, venda.getIdFuncionario());
       comando.setDouble(4, venda.getValorVenda());
+      comando.setInt(5, venda.getQuantidade());
       
       comando.executeUpdate();
       
@@ -39,7 +40,8 @@ public class VendasController {
   }
     
     public List<Vendas> listarVendas() {
-    String sql = "SELECT vendas.idVenda as idVenda, clientes.nome as NomeCliente, funcionarios.nome as NomeFuncionario, produtos.nome as NomeProduto, vendas.valorVenda "
+    String sql = "SELECT vendas.idVenda as idVenda, clientes.nome as NomeCliente, funcionarios.nome as NomeFuncionario,"
+            + " produtos.nome as NomeProduto, vendas.valorVenda, vendas.quantidade  "
             + "from vendas join clientes on vendas.idCliente = clientes.idCliente join "
             + "funcionarios on vendas.idFuncionario = funcionarios.idFuncionario join "
             + "produtos on vendas.idProduto = produtos.idProduto";
@@ -65,6 +67,7 @@ public class VendasController {
         venda.setNomeFuncionario(resultado.getString("NomeFuncionario"));
         venda.setNomeProduto(resultado.getString("NomeProduto"));
         venda.setValorVenda(resultado.getDouble("valorVenda"));
+        venda.setQuantidade(resultado.getInt("quantidade"));
 
         listaVendas.add(venda);
       }
@@ -87,7 +90,7 @@ public class VendasController {
         + "clientes.nome as NomeCliente, "
         + "funcionarios.nome as NomeFuncionario, "
         + "produtos.nome as NomeProduto, "
-        + "vendas.valorVenda "
+        + "vendas.valorVenda, vendas.quantidade "
         + "FROM vendas "
         + "JOIN clientes ON vendas.idCliente = clientes.idCliente "
         + "JOIN funcionarios ON vendas.idFuncionario = funcionarios.idFuncionario "
@@ -117,6 +120,7 @@ public class VendasController {
         venda.setNomeFuncionario(resultado.getString("NomeFuncionario"));
         venda.setNomeProduto(resultado.getString("NomeProduto"));
         venda.setValorVenda(resultado.getDouble("valorVenda"));
+        venda.setQuantidade(resultado.getInt("quantidade"));
 
       }
 
@@ -154,7 +158,7 @@ public class VendasController {
   }
      public boolean alterarVenda(Vendas vend) {
     String sql = "UPDATE vendas SET idCliente=?, idProduto = ?, "
-            + " idFuncionario = ?, valorVenda = ? WHERE idVenda = ?";
+            + " idFuncionario = ?, valorVenda = ?, quantidade = ? WHERE idVenda = ?";
 
     GerenciadorConexao gerenciador = new GerenciadorConexao();
     PreparedStatement comando = null;
@@ -166,7 +170,8 @@ public class VendasController {
       comando.setInt(2, vend.getIdProduto());
       comando.setInt(3, vend.getIdFuncionario());
       comando.setDouble(4, vend.getValorVenda());
-      comando.setInt(5, vend.getIdVenda());
+      comando.setInt(5, vend.getQuantidade());
+      comando.setInt(6, vend.getIdVenda());
 
       comando.executeUpdate();
 

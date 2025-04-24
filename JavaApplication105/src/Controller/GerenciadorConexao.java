@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class GerenciadorConexao {
   private static final String URL = "jdbc:mysql://127.0.0.1:3306/mercado";
   private static final String USER = "root";
-  private static final String PASSWORD = "";
+  private static final String PASSWORD = "X3v$9pLq@zA7!mTg";
   private Connection conexao;
   
   public GerenciadorConexao() {

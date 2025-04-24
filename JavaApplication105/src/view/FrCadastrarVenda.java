@@ -66,6 +66,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         btnBuscarFuncionario = new javax.swing.JButton();
         btnBuscarCliente = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        edtQuantidade = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar Venda");
@@ -168,6 +169,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cesta-de-compras.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
+        jPanel1.add(edtQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -257,6 +259,8 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         vendas.setIdProduto(idProduto);
         double valor = Double.parseDouble(edtPreco.getText().replace(",", "."));
         vendas.setValorVenda(valor);
+        int quantidade = Integer.parseInt(edtQuantidade.getText().replace(",", "."));
+        vendas.setQuantidade(quantidade);
 
         VendasController controller = new VendasController();
 
@@ -322,6 +326,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     private javax.swing.JTextField edtNomeFuncionario;
     private javax.swing.JTextField edtNomeProduto;
     private javax.swing.JTextPane edtPreco;
+    private javax.swing.JTextField edtQuantidade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

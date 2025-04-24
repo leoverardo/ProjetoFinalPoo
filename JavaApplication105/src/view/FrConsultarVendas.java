@@ -69,20 +69,20 @@ public class FrConsultarVendas extends javax.swing.JDialog {
 
         tblVendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "idVenda", "Nome do Cliente", "Nome do Funcionario", "Nome do Produto", "Valor da Venda"
+                "idVenda", "Nome do Cliente", "Nome do Funcionario", "Nome do Produto", "Valor da Venda", "Quantidade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -238,7 +238,8 @@ public void pesquisar() {
                 vend.getNomeCliente(),
                 vend.getNomeFuncionario(),
                 vend.getNomeProduto(),
-                vend.getValorVenda()
+                vend.getValorVenda(),
+                vend.getQuantidade()
             };
             modelotabela.addRow(linha);
         }
