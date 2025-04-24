@@ -13,11 +13,9 @@ import Model.Funcionario;
 import Model.Produtos;
 import Model.Vendas;
 import java.util.List;
-<<<<<<< HEAD
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-=======
->>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,10 +29,7 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     public FrCadastrarVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-<<<<<<< HEAD
         
-=======
->>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
         this.setLocationRelativeTo(null);
     }
 
@@ -46,7 +41,6 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -59,39 +53,51 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         txtVenda = new javax.swing.JTextPane();
         btnSalvar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
-        selectCliente = new javax.swing.JComboBox<>();
-        selectProduto = new javax.swing.JComboBox<>();
-        selectFuncionario = new javax.swing.JComboBox<>();
+        edtCodProduto = new javax.swing.JTextField();
+        edtNomeProduto = new javax.swing.JTextField();
+        edtCodCliente = new javax.swing.JTextField();
+        edtNomeCliente = new javax.swing.JTextField();
+        edtCodFuncionario = new javax.swing.JTextField();
+        edtNomeFuncionario = new javax.swing.JTextField();
+        btnBuscarProduto = new javax.swing.JButton();
+        btnBuscarFuncionario = new javax.swing.JButton();
+        btnBuscarCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar Venda");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setToolTipText("");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Cadastrar Vendas");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 261, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Produto");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 136, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("Cliente");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("Funcionario");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setText("Valor Venda");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
         jScrollPane8.setViewportView(txtVenda);
 
-<<<<<<< HEAD
+        jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 140, 30));
+
         btnSalvar.setBackground(new java.awt.Color(51, 153, 255));
         btnSalvar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
-=======
-        btnSalvar.setBackground(new java.awt.Color(51, 51, 255));
->>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
         btnSalvar.setText("Salvar");
         btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -103,150 +109,59 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
                 btnSalvarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 458, 134, 39));
 
         btnVoltar.setBackground(new java.awt.Color(255, 0, 51));
-<<<<<<< HEAD
         btnVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
-=======
->>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 458, 134, 39));
+        jPanel1.add(edtCodProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 56, 30));
+        jPanel1.add(edtNomeProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 241, 30));
+        jPanel1.add(edtCodCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 56, 30));
+        jPanel1.add(edtNomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 241, 30));
+        jPanel1.add(edtCodFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 56, 30));
+        jPanel1.add(edtNomeFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 241, 30));
 
-<<<<<<< HEAD
-        selectCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-=======
-        selectCliente.setMaximumRowCount(50);
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, selectCliente, org.jdesktop.beansbinding.ELProperty.create("${action}"), selectCliente, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
-        bindingGroup.addBinding(binding);
-
->>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
-        selectCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectClienteActionPerformed(evt);
+        btnBuscarProduto.setText("Buscar");
+        btnBuscarProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarProdutoMouseClicked(evt);
             }
         });
+        jPanel1.add(btnBuscarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, -1, -1));
 
-        selectProduto.setMaximumRowCount(50);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, selectProduto, org.jdesktop.beansbinding.ELProperty.create("${action}"), selectProduto, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
-        bindingGroup.addBinding(binding);
-
-        selectProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectProdutoActionPerformed(evt);
+        btnBuscarFuncionario.setText("Buscar");
+        btnBuscarFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarFuncionarioMouseClicked(evt);
             }
         });
+        jPanel1.add(btnBuscarFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
 
-        selectFuncionario.setMaximumRowCount(50);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, selectFuncionario, org.jdesktop.beansbinding.ELProperty.create("${action}"), selectFuncionario, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
-        bindingGroup.addBinding(binding);
-
-        selectFuncionario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectFuncionarioActionPerformed(evt);
+        btnBuscarCliente.setText("Buscar");
+        btnBuscarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarClienteMouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-<<<<<<< HEAD
-=======
-                        .addGap(92, 92, 92)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
->>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(selectCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(selectFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(selectProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-<<<<<<< HEAD
-                .addGap(64, 64, 64)
-                .addComponent(jLabel1)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel4)
-=======
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel1)))
->>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selectProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel5)
-                        .addGap(10, 10, 10)
-                        .addComponent(selectCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel3)))
-                .addGap(8, 8, 8)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(selectFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
-        );
+        jPanel1.add(btnBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,80 +174,29 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void selectClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectClienteActionPerformed
-        ClienteController clienteController = new ClienteController();
-        
-        List<Clientes> listaClientes = clienteController.listarCliente();
-
-        for (Clientes cliente : listaClientes) {
-            selectCliente.addItem(cliente);
-        }
-    }//GEN-LAST:event_selectClienteActionPerformed
-
 
     
-    private void selectProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectProdutoActionPerformed
-    ProdutoController produtoController = new ProdutoController();
-
-    List<Produtos> listaProdutos = produtoController.consultarProdutos();
-    
-
-    for(Produtos produto : listaProdutos){
-        selectProduto.addItem(produto);
-    }
-   
-    }//GEN-LAST:event_selectProdutoActionPerformed
-
-<<<<<<< HEAD
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
-
-            gravar();
+  
     }//GEN-LAST:event_btnSalvarMouseClicked
-    public void gravar() {
 
-    Vendas vendas = new Vendas();
+    private void btnBuscarProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarProdutoMouseClicked
+        FrBuscarProduto telaBuscProduto = new FrBuscarProduto(null, true);
+        telaBuscProduto.setVisible(true);
+    }//GEN-LAST:event_btnBuscarProdutoMouseClicked
 
-    Produtos produtoSelecionado = (Produtos) selectProduto.getSelectedItem();
-    Clientes clienteSelecionado = (Clientes) selectCliente.getSelectedItem();
-    Funcionario funcionarioSelecionado = (Funcionario) selectFuncionario.getSelectedItem();
+    private void btnBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarClienteMouseClicked
+        FrBuscarCliente telaBuscCliente = new FrBuscarCliente(null, true);
+        telaBuscCliente.setVisible(true);
+    }//GEN-LAST:event_btnBuscarClienteMouseClicked
 
-    vendas.setIdProduto(produtoSelecionado.getIdProduto());
-    vendas.setIdCliente(clienteSelecionado.getIdCliente());
-    vendas.setIdFuncionario(funcionarioSelecionado.getIdFuncionario());
-
-    try {
-        double valorVenda = Double.parseDouble(txtVenda.getText());
-        vendas.setValorVenda(valorVenda);
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(null, "Valor inválido para a venda.", "Erro", JOptionPane.ERROR_MESSAGE);
-    }
-     VendasController vend = new VendasController();
-    boolean sucesso = vend.inserirVenda(vendas);
-    
-    if (sucesso) {
-        JOptionPane.showMessageDialog(null, "Venda registrada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-    } else {
-        JOptionPane.showMessageDialog(null, "Erro ao registrar venda.", "Erro", JOptionPane.ERROR_MESSAGE);
-    }
-}
+    private void btnBuscarFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarFuncionarioMouseClicked
+         FrBuscarFuncionario telaBuscFuncionario = new FrBuscarFuncionario(null, true);
+        telaBuscFuncionario.setVisible(true);
+    }//GEN-LAST:event_btnBuscarFuncionarioMouseClicked
+   
     
 
-=======
-    private void selectFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFuncionarioActionPerformed
-    FuncionarioController funcionarioController = new FuncionarioController();
-
-    List<Funcionario> listaFuncionarios = funcionarioController.listarFuncionario();
-    
-
-    for(Funcionario funcionario : listaFuncionarios){
-        selectFuncionario.addItem(funcionario);
-    }
-    }//GEN-LAST:event_selectFuncionarioActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
->>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -373,8 +237,17 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarCliente;
+    private javax.swing.JButton btnBuscarFuncionario;
+    private javax.swing.JButton btnBuscarProduto;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JTextField edtCodCliente;
+    private javax.swing.JTextField edtCodFuncionario;
+    private javax.swing.JTextField edtCodProduto;
+    private javax.swing.JTextField edtNomeCliente;
+    private javax.swing.JTextField edtNomeFuncionario;
+    private javax.swing.JTextField edtNomeProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -383,10 +256,6 @@ public class FrCadastrarVenda extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JComboBox<Clientes> selectCliente;
-    private javax.swing.JComboBox<Funcionario> selectFuncionario;
-    private javax.swing.JComboBox<Produtos> selectProduto;
     private javax.swing.JTextPane txtVenda;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

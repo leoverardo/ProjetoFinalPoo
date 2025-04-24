@@ -56,18 +56,10 @@ public class Produtos {
     public void setValidade(String validade) {
         this.validade = validade;
     }
-<<<<<<< HEAD
     @Override
     public String toString() {
     return this.nome; // Mostra o nome no JComboBox
 }
-=======
-
-    @Override
-    public String toString() {
-        return getNome();
-    }
->>>>>>> 0a11f78d6df72764edfed304cbb6d3059c3c5196
     
      
 }
